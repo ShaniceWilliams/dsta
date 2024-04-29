@@ -1,8 +1,7 @@
 ---
-lang: English
+lang: en
 author: DSTA
-title: Module introduction
-date: January
+title: "Module introduction"
 ---
 
 # Data Science: Techniques and Applications (DSTA)
@@ -15,16 +14,16 @@ date: January
 
 . . .  
 
-*we are in it together*
+#### we are in this together
 
 <!--------------------------------------------------->
 ## Main topics
 
-* Python modules for DS, ``numpy,`` ``scipy`` etc.
+* Python modules for DS, `Numpy,` `Pandas,` `Matplotlib` and `Scikit-learn.`
 
 * The geometric view of multidimensional data (Lin. Algebra)
 
-* The data-as-network view (graph algo. from FoC & PwD)
+* The data-as-network view (graph algo.)
 
 * the text-as-data view (Information Theory)
 
@@ -95,25 +94,55 @@ __Teaching Assistants:__
 
 * PG admins for support in navigating school
   
-![Matt](./imgs/matt.jpg)
+![Matt](./imgs/matt.jpg){:height="40%" width="40%"}
+
 
 . . .
 
-* TAs for support with lab experience 
+* TAs for support with lab experience
   
-![Abul](./imgs/abul.jpg) 
+![Abul](./imgs/abul.jpg){:height="40%" width="40%"}
 
-![Paschalis](./imgs/paschalis.jpg) 
+![Paschalis](./imgs/paschalis.jpg){:height="40%" width="40%"}
   
-![Alberto](./imgs/alberto.jpg)
+![Alberto](./imgs/alberto.jpg){:height="40%" width="40%"}
 
 . . .
 
 * module coordinator about the study materials
   
-![Ale](./imgs/ale-caffe-lerici.jpg)
+![Ale](./imgs/ale-caffe-lerici.jpg){:height="40%" width="40%"}
+
 
 <!----------------------------------------------------------------->
 ## Too many e-mails
 
-[![](./imgs/lotsofemails.jpg)](https://www.theguardian.com/technology/shortcuts/2019/jan/14/inbox-infinity-is-ignoring-all-your-emails-the-secret-to-a-happy-2019)
+Your feedback and questions are always welcome.
+
+Help avoiding [inbox overflow](https://www.theguardian.com/technology/shortcuts/2019/jan/14/inbox-infinity-is-ignoring-all-your-emails-the-secret-to-a-happy-2019) by please contacting us via MS Teams or Moodle class forum
+
+![Lots of emails](./imgs/lotsofemails.jpg){:height="50%" width="50%"}
+
+<!--------------------------------------------------->
+# Assessment
+
+## Coursework
+
+For the first time, coursework will take the form of an in-class, multiple-choice test via Codio/ Moodle.
+
+On Week 6 (May 28th) at 20:00 for about 30/40 minutes.
+
+10 questions on the 10 foundational units: from 2.b to 4.c (see the [online calendar](https://github.com/ale66/dsta)).
+
+In view of the novelty of the approach, marks will be awarded generously, but always at the discretion of the School's [Exam board](https://en.wikipedia.org/wiki/The_Spanish_Inquisition_(Monty_Python)).
+
+<!-- ----------------------------------------------- -->
+## Final test
+
+For the first time, the final test will take the form of an in-class, multiple-choice test via Codio/ Moodle.
+
+On the final Week 11 (July 2nd) at 19:00 for about 60/80 minutes.
+
+20 questions on the 20 advanced units: from 4.d to 10.c but excludind the notebooks on 7.d, 8.d, 9.d and 10.d (see the [online calendar](https://github.com/ale66/dsta)).
+
+In view of the novelty of the approach ...

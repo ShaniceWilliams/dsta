@@ -1,7 +1,7 @@
 ---
-lang: English
+lang: en
 author: DSTA 
-title: Math concepts for Data Science
+title: "Math concepts for Data Science"
 Date: 
 ---
 
@@ -12,7 +12,8 @@ Date:
 
 Activity tables show how users *map* their choices or, viceversa, how available products *map* onto their adopters.
 
-![activity matrix](./imgs/activity_matrix.png)
+![activity matrix](./imgs/activity_matrix.png){:height="40%" width="40%"}
+
 
 <!--Essentially, a weighted binary relationship between users and films...-->
 
@@ -203,9 +204,11 @@ Simplest solution: $x_1=1$ and $x_2=-2$.
 
 The determinant understand the matrix as an area
 
-![determinant](./imgs/determinant.svg)
+![determinant](./imgs/determinant.svg){:height="40%" width="40%"}
 
-![area](./imgs/area.png)
+
+![area](./imgs/area.png){:height="40%" width="40%"}
+
 
 -----
 
@@ -298,7 +301,8 @@ print(Ainverse.dot(A))
 
 Inversion is only defined for square matrices, so if $A$ is not square we then use the square matrix $A^\prime = A^T\cdot A$
 
-![transpose](./imgs/transpose.png)
+![transpose](./imgs/transpose.png){:height="50%" width="50%"}
+
 
 . . .
 
@@ -337,7 +341,8 @@ print(at2)
 
 Alternative transposition:
 
-![transpose](./imgs/transpose.png)
+![transpose](./imgs/transpose.png){:height="50%" width="50%"}
+
 
 ```python
 import numpy as np

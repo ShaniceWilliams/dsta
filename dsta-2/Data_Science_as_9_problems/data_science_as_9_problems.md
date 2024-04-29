@@ -8,7 +8,8 @@ date:
 
 ## A gentle-yet-focussed introduction
 
-![[Ch. 2](./provost-ch2.pdf)](./imgs/provost-cover.jpg)
+![[Ch. 2](./provost-ch2.pdf)](./imgs/provost-cover.jpg){:height="40%" width="40%"}
+
 
 -----
 
@@ -50,7 +51,8 @@ __Measure:__ misclassification
 
 -----
 
-![Type I and II errors](./imgs/false_positives_and_negatives.jpg)
+![Type I and II errors](./imgs/false_positives_and_negatives.jpg){:height="40%" width="40%"}
+
 
 -----
 
@@ -72,7 +74,8 @@ __Solution:__  similarity function $\sigma: \mathbf{X} \rightarrow \mathbb{R}$
 
 -----
 
-![[Ch. 2](./provost-ch2.pdf)](./imgs/similarity.png)
+![[Ch. 2](./provost-ch2.pdf)](./imgs/similarity.png){:height="40%" width="40%"}
+
 
 <!-- http://dingcvnote.blogspot.com/2018/06/matlab-comparing-of-detect-feature.html -->
 
@@ -153,7 +156,7 @@ Example research work on [Social media profiling](https://ieeexplore.ieee.org/ab
 
 __Instance:__
 
-* a dynamical graph (network) $\mathbf{G}$, i.e., a sequence
+* a dynamical [graph (network) $\mathbf{G}$](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)) , i.e., a sequence
 
 $<V, E>$,
 
@@ -161,7 +164,10 @@ $<V, E^\prime=E+\{(u,v)\}>$,
 
 $<V, E^{\prime\prime}=E^\prime+\{(r,s)\}>\dots$
 
-[![Network](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/6n-graf.svg/1200px-6n-graf.svg.png)](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics))
+
+
+![Network](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/6n-graf.svg/1200px-6n-graf.svg.png){:height="40%" width="40%"}
+
 
 __Question:__
 
@@ -213,6 +219,7 @@ Example: Exactly What food causes you to put on weight?
 
 Controlled clinical trials, A/B testing.
 
+<!-- --------- -->
 # [Un]Supervision
 
 ## Supervised Data Science
