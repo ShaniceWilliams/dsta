@@ -83,7 +83,7 @@ A system of linear equations:
 
 $$a_{i_1} x_1 + a_{i_2} x_2 + \dots a_{i_n} x_n = b_i$$  
 
-. . . 
+. . .
 
 $$A \mathbf{x} = \mathbf{b}$$
 
