@@ -1,15 +1,14 @@
 ---
-lang: English
-author: 
-title: Data Science as 9 problems
+lang: en
+author: DSTA
+title: "Data Science as 9 problems"
 date: 
 ---
 
 
 ## A gentle-yet-focussed introduction
 
-![[Ch. 2](./provost-ch2.pdf)](./imgs/provost-cover.jpg){:height="40%" width="40%"}
-
+![[Ch. 2](./provost-ch2.pdf)](./imgs/provost-cover.jpg)
 
 -----
 
@@ -51,12 +50,11 @@ __Measure:__ misclassification
 
 -----
 
-![Type I and II errors](./imgs/false_positives_and_negatives.jpg){:height="40%" width="40%"}
-
+![Type I and II errors](./imgs/false_positives_and_negatives.jpg)
 
 -----
 
-1. Similarity
+3. Similarity
 
 Identify similar individuals based on data known about them.
 
@@ -74,14 +72,13 @@ __Solution:__  similarity function $\sigma: \mathbf{X} \rightarrow \mathbb{R}$
 
 -----
 
-![[Ch. 2](./provost-ch2.pdf)](./imgs/similarity.png){:height="40%" width="40%"}
-
+![[Ch. 2](./provost-ch2.pdf)](./imgs/similarity.png)
 
 <!-- http://dingcvnote.blogspot.com/2018/06/matlab-comparing-of-detect-feature.html -->
 
 -----
 
-1. Clustering (segmentation)
+4. Clustering (segmentation)
 
 group individuals in a population together by their similarity (but not driven by any specific purpose)
 
@@ -108,7 +105,7 @@ https://www.sciencedirect.com/science/article/pii/S0022000013000767)
 
 -----
 
-1. Co-occurence (frequent itemset mining)
+5. Co-occurence (frequent itemset mining)
 
 similarity of objects based on their appearing together in transactions.
 
@@ -142,7 +139,7 @@ __Instance:__
 
 . . .
 
-__Solution:__  a functional reaction of __u__ to *a,* i.e., $\rho: \mathbf{U} \times \mathbf{A} \rightarrow \mathbf{R}$
+__Solution:__  a functional reaction of __u__ to __a__, i.e., $\rho: \mathbf{U} \times \mathbf{A} \rightarrow \mathbf{R}$
 
 . . .
 
@@ -152,7 +149,7 @@ Example research work on [Social media profiling](https://ieeexplore.ieee.org/ab
 
 -----
 
-1. Link prediction
+7. Link prediction
 
 __Instance:__
 
@@ -164,10 +161,7 @@ $<V, E^\prime=E+\{(u,v)\}>$,
 
 $<V, E^{\prime\prime}=E^\prime+\{(r,s)\}>\dots$
 
-
-
-![Network](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/6n-graf.svg/1200px-6n-graf.svg.png){:height="40%" width="40%"}
-
+![From wikimedia](./imgs/network.png)
 
 __Question:__
 
@@ -177,11 +171,11 @@ __Question:__
 
 What YouTube video will you watch next?
 
-Alternatives: predict the *strength* of the new link; l. deletion.
+Alternatives: predict the __strength__ of the new link; l. deletion.
 
 -----
 
-1. Data reduction
+8. Data reduction
 
 __Instance:__
 
@@ -226,7 +220,7 @@ Controlled clinical trials, A/B testing.
 
 * obtain a dataset of examples, inc. the  "target"  dimension, called *label*
 
-* split it in training and test data 
+* split it in training and test data
 
 * run a. on the test data, find a putative solution
 

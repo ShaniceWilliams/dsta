@@ -12,8 +12,7 @@ Date:
 
 Activity tables show how users *map* their choices or, viceversa, how available products *map* onto their adopters.
 
-![activity matrix](./imgs/activity_matrix.png){:height="40%" width="40%"}
-
+![](./imgs/activity_matrix.png)
 
 <!--Essentially, a weighted binary relationship between users and films...-->
 
@@ -41,13 +40,12 @@ In Lin. Algebra the matrix *"forgets"* the labels for rows/cols., e.g., Joe/1st 
 
 $$
 B_{18\times 13}  =  
-\begin{pmatrix}
-1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1\\
-1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1\\
-1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1\\
-&&& {\ddots} &&& &&&  {\ddots} &&& {\vdots}\\
-0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 2
-\end{pmatrix}
+\begin{array}{|ccccccc|ccccc|c}
+1 & 0 & 0 & {\ddots} &&& && 1 & 0 & {\ddots} && 1\\
+1 & 0 & 0 & {\ddots} &&& && 0 & 1 & {\ddots} && 1\\
+1 & 0 & 0 & {\ddots} &&& &&&  {\ddots} &&& {\vdots}\\
+&&& {\ddots} &&& &&&  {\ddots} &&& {\vdots}
+\end{array}
 $$
 
 1st col. indicates that Joe watched the film
@@ -61,11 +59,10 @@ the final col. is views (or ratings) from the original table
 $$
 B_{18\times 13}  =  
 \begin{array}{|ccccccc|ccccc|c}
-1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1\\
-1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1\\
-1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1\\
-&&& {\ddots} &&& &&&  {\ddots} &&& {\vdots}\\
-0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 2
+1 & 0 & 0 & {\ddots} &&& && 1 & 0 & {\ddots} && 1\\
+1 & 0 & 0 & {\ddots} &&& && 0 & 1 & {\ddots} && 1\\
+1 & 0 & 0 & {\ddots} &&& &&&  {\ddots} &&& {\vdots}\\
+&&& {\ddots} &&& &&&  {\ddots} &&& {\vdots}
 \end{array}
 $$
 
@@ -130,7 +127,6 @@ $$
 0
 \end{pmatrix}
 $$
-
 
 $$
 A =
@@ -204,11 +200,14 @@ Simplest solution: $x_1=1$ and $x_2=-2$.
 
 The determinant understand the matrix as an area
 
-![determinant](./imgs/determinant.svg){:height="40%" width="40%"}
+$$
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix} = ad - bc
+$$
 
-
-![area](./imgs/area.png){:height="40%" width="40%"}
-
+![area](./imgs/area.png)
 
 -----
 
@@ -303,7 +302,6 @@ Inversion is only defined for square matrices, so if $A$ is not square we then u
 
 ![transpose](./imgs/transpose.png){:height="50%" width="50%"}
 
-
 . . .
 
 ```python
@@ -341,8 +339,7 @@ print(at2)
 
 Alternative transposition:
 
-![transpose](./imgs/transpose.png){:height="50%" width="50%"}
-
+![](./imgs/transpose.png)
 
 ```python
 import numpy as np
@@ -364,7 +361,7 @@ A.dot(B) == A @ B # matrix multiplication
 A.dot(B) != A * B # element-wise product
 ```
 
-``@`` generalises to *tensors:* three-dimensional mat. 
+``@`` generalises to *tensors:* three-dimensional matrices.
 
 -----
 
@@ -379,7 +376,7 @@ print(mprime.shape)
 ```
 
 Here (the Jason Bourne ex.) rows are *not* independent.
-This is revealed by $|M^\prime |=0$ 
+This is revealed by $|M^\prime |=0$
 
 ```python
 print(np.linalg.det(mprime))
