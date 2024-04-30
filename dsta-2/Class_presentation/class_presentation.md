@@ -4,7 +4,7 @@ author: DSTA
 title: "Module introduction"
 ---
 
-# Data Science: Techniques and Applications (DSTA)
+## Data Science: Techniques and Applications (DSTA)
 
 ## A new[ish] module
 
@@ -26,6 +26,8 @@ title: "Module introduction"
 * The data-as-network view (graph algo.)
 
 * the text-as-data view (Information Theory)
+
+. . .
 
 * a motivating DS problem: sports ranking
   
@@ -54,65 +56,53 @@ This is a *final* module in charge of synthetising a large, fast-moving area.
 
 so, expect a more seminarial (than textbook) approach.
 
-## A successful module
-
-Data from 2018-19:
-
-![DSTA feedback](./imgs/dsta-feedback.png)
-
-![ML feedback](./imgs/ml-feedback.png)
-
-<!--------------------------------------------------->
 <!--------------------------------------------------->
 # Organization
 
-## About the class
+## In lab
 
-Moodle is the main platform for online interaction and studies
+* [Alessandro Provetti](https://www.bbk.ac.uk/our-staff/profile/8920719/alessandro-provetti)
 
-For latest updates and to see the study programme at-a-glance
-please refer to the satellite repository:
+* [Abul Hasan](https://www.linkedin.com/in/abul-hasan-a2682b92/)
+
+* [Paschalis Lagias](https://www.linkedin.com/in/paschalis-lagias-ab888057)
+
+* [Alberto Matuozzo](https://www.linkedin.com/in/alberto-matuozzo-2a504a8/)
+
+## Online
+
+Standard Moodle/Teams provision
+
+Updated at-a-glance programme on the satellite site:
 
 [http://www.dcs.bbk.ac.uk/~ale/dsta](http://www.dcs.bbk.ac.uk/~ale/dsta/)
 
-Please check your email and MyBirkbeck calendar for time/place amendments.
+[https://ale66.github.io/dsta/](https://ale66.github.io/dsta/)
 
-## In classroom
+All-in-one downloadable materials:
 
-[Alessandro Provetti](https://www.bbk.ac.uk/our-staff/profile/8920719/alessandro-provetti)
+[https://github.com/ale66/dsta/](https://github.com/ale66/dsta/)
 
-__Teaching Assistants:__
-
-1. [Abul Hasan](https://www.linkedin.com/in/abul-hasan-a2682b92/)
-
-2. [Paschalis Lagias](https://www.linkedin.com/in/paschalis-lagias-ab888057)
-
-3. [Alberto Matuozzo](https://www.linkedin.com/in/alberto-matuozzo-2a504a8/)
+Please check your email and MyBirkbeck calendar for (unlikely) time/place amendments.
 
 <!---------------------------------------------------------------->
 ## Please see your
 
-* PG admins for support in navigating school
+* PG admins, Matt Spence and Yeti Wan, for support in navigating school: [cs-pg@bbk.ac.uk]()
+
+![Matt](./imgs/matt.png) ![Yeti](./imgs/yeti.png)
+
+## also see your
+
+* TAs, Abul, Paschalis and Alberto, for support with lab experience
   
-![Matt](./imgs/matt.jpg){:height="40%" width="40%"}
+![Abul](./imgs/abul.png) ![Paschalis](./imgs/paschalis.png)![Alberto](./imgs/alberto.png)
 
+## and finally see your
 
-. . .
-
-* TAs for support with lab experience
+* module coordinator, Alessandro, about the study materials and general *'meaning of life'* questions
   
-![Abul](./imgs/abul.jpg){:height="40%" width="40%"}
-
-![Paschalis](./imgs/paschalis.jpg){:height="40%" width="40%"}
-  
-![Alberto](./imgs/alberto.jpg){:height="40%" width="40%"}
-
-. . .
-
-* module coordinator about the study materials
-  
-![Ale](./imgs/ale-caffe-lerici.jpg){:height="40%" width="40%"}
-
+![](./imgs/ale-caffe-lerici.png)
 
 <!----------------------------------------------------------------->
 ## Too many e-mails
@@ -121,10 +111,18 @@ Your feedback and questions are always welcome.
 
 Help avoiding [inbox overflow](https://www.theguardian.com/technology/shortcuts/2019/jan/14/inbox-infinity-is-ignoring-all-your-emails-the-secret-to-a-happy-2019) by please contacting us via MS Teams or Moodle class forum
 
-![Lots of emails](./imgs/lotsofemails.jpg){:height="50%" width="50%"}
+![](./imgs/lotsofemails.png)
 
 <!--------------------------------------------------->
 # Assessment
+
+## Past Marking trends
+
+DSTA vs. ML in 2019:
+
+![](./imgs/dsta-feedback.png)
+
+![](./imgs/ml-feedback.png)
 
 ## Coursework
 
@@ -143,6 +141,6 @@ For the first time, the final test will take the form of an in-class, multiple-c
 
 On the final Week 11 (July 2nd) at 19:00 for about 60/80 minutes.
 
-20 questions on the 20 advanced units: from 4.d to 10.c but excludind the notebooks on 7.d, 8.d, 9.d and 10.d (see the [online calendar](https://github.com/ale66/dsta)).
+20 questions on the 20 advanced units: from 4.d to 10.c but excluding the notebooks on 7.d, 8.d, 9.d and 10.d (see the [online calendar](https://github.com/ale66/dsta)).
 
 In view of the novelty of the approach ...
