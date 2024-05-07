@@ -1,20 +1,56 @@
 ---
-lang: English
-author: DSTA
-title: Entropy
+title: "Entropy"
+lang: en
+author: DSTA 
+format:
+  revealjs: 
+    theme: solarized
+    css: ../../styles/dsta_slides.css
+    slide-number: true
+    slide-level: 2
+    # title-slide-attributes:
+      # data-background-image: ../../styles/bbk-logo.svg
+    code-fold: false
+    echo: true
+    # smaller: true
+    # scrollable: true
+  html:
+    toc: true
+    code-fold: false
+    anchor-sections: true
+    other-links:
+      - text: Class page
+        href: https://ale66.github.io/dsta/
+jupyter: python3
+engine: knitr
 ---
 
 # Entropy and divergence
 
 ## Information entropy [Shannon, 1948]
 
-Information channels: to communicate n signals/commands, how many lamps/semaphores are needed?
+Information channels: to communicate __n__ distinct signals/commands, how many lamps/semaphores are needed?
 
-![Railway lights](./imgs/railway-lights.jpg)
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](./imgs/railway-lights.jpg)
+
+:::
+
+::: {.column width="50%"}
+It depends on the informative content (surprise) of the signals.
+:::
+::::
+
+-----
+
+Data compression: how many bits are needed to store a text? Can we compress it?
 
 . . .
 
-It depends on the informative content (surprise) of the signals.
+I depends on frequency of the letters: are they equally likely?
 
 ## Wheather news: London vs. Wadi Halfa
 
@@ -24,11 +60,15 @@ Weather forecasts for London are frequent and __nuanced__
 
 Not so in [Wadi Halfa (Sudan)](https://en.wikipedia.org/wiki/Wadi_Halfa), one of the driest cities on Earth
 
-[Bus stop](./imgs/wadi-halfa.jpg)
+![](./imgs/wadi-halfa.jpg)
+
+A light rain may be surprising in Wadi Halfa but in London?
+
+What if we want to add wheather information at the bus stop?
 
 -----
 
-W. in Wadi Halfa has __low entropy__ and needs a *small communication channel:* few signals are needed.
+Wheather in Wadi Halfa has __low entropy__ thus needs a *small communication channel:* few signals are needed.
 
 London needs a high-capacity communication channel.
 
@@ -107,6 +147,8 @@ $H[X] = \sum Pr[X=x_i]\cdot I[x_i]$
 
 where
 
+. . .
+
 $I[x_i] = \log_2(\frac{1}{Pr[X=x_i]})$
 
 -----
@@ -117,11 +159,11 @@ $H[X] = -\sum Pr[X=x_i]\cdot \log_2 Pr[X=x_i]$
 
 . . .
 
-Minimal: H[X]=0, the system is deterministic, no information in knowing about.
+Min: H[X]=0, the system is deterministic, no information in knowing about.
 
 . . .
 
-Maximal: $H[X]=\log_2 n$ all messages have the same probability.
+Max: $H[X]=\log_2 n$ all messages have the same probability.
 
 ## Implementation
 
