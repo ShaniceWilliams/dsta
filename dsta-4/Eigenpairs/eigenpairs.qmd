@@ -1,12 +1,34 @@
 ---
+title: "Eigenpairs"
 lang: en
-author: 
-title: Eigenpairs
+author: DSTA 
+format:
+  revealjs: 
+    theme: solarized
+    css: ../../styles/dsta_slides.css
+    slide-number: true
+    slide-level: 2
+    # title-slide-attributes:
+      # data-background-image: ../../styles/bbk-logo.svg
+    code-fold: false
+    echo: true
+  html:
+    toc: true
+    code-fold: false
+    anchor-sections: true
+    other-links:
+      - text: Class page
+        href: https://ale66.github.io/dsta/
+    code-links:
+      - text: Data
+        icon: file-code
+        href: ./data/biostats.csv
+jupyter: python3
 ---
 
 # Eigenpairs
 
-## Study material
+## Study materials
 
 I. Goodfellow, Y. Bengio and A. Courville:
 
@@ -16,7 +38,7 @@ J. Lescovec, A. Rajaraman, J. Ullmann:
 
 [Mining of Massive datasets, MIT Press, 2016](http://www.mmds.org/).
 
-The material covered here is presented in the HTML/PDF excerpts available for download.
+The material covered here is presented in the excerpts available for download.
 
 <!------------------------------------------------------------->
 # Spectral Analysis
@@ -85,8 +107,11 @@ $$
 \end{bmatrix}
 $$
 
+![[](https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors)](./imgs/mona_lisa.png)
+
 -----
-![[Mona Lisa](https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors)](./imgs/mona_lisa.png)
+
+![[](https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors)](./imgs/mona_lisa.png)
 
 
 The blue line is unchanged:
@@ -125,11 +150,11 @@ e-values *expand* one's affiliation to a specific *topic*.
 
 ## Euclidean norm
 
+Pythagora's theorem, essentially.
+
 $||\mathbf{x}|| = \sqrt{\mathbf{x}^T\mathbf{x}} = \sqrt{\sum_{i=1}^m x_i^2}$
 
-![Euclid 1](./imgs/euclid-1.png)
-
-Pythagoras' theorem, essentially.
+![](./imgs/euclid-1.png)
 
 . . .
 
@@ -139,11 +164,13 @@ $||\mathbf{x}||_p = (|x_1|^p + |x_1|^p + \dots |x_m|^p)^\frac{1}{p} = (\sum_{i=1
 
 -----
 
-![Euclid 2](./imgs/euclid-2.png)
+![](./imgs/euclid-2.png)
 
 . . .
 
-The Frobenius norm $||\cdot ||_F$ extends $||\cdot ||_2$ to matrices
+The Frobenius norm $||\cdot ||_F$ extends $||\cdot ||_2$ to matrices:
+
+$||\mathbf{A}||_F = \sqrt{\sum_{i=1}^m \sum_{j=1}^n |a_{ij}|^2}$
 
 ## Normalization
 
@@ -177,7 +204,7 @@ $$
 . . .
 
 Either of the two factors should be 0. 
-Hence, a non-zero __e__ is associated to a solution of
+Hence, a non-zero vector __e__ is associated to a solution of
 
 $$
 |M - \lambda \mathbf{I}| = 0
@@ -195,13 +222,13 @@ Their general algorithmic structure:
 
 -find the $\lambda$s that make $|\dots | = 0$, then
 
--for each $\lambda$ find its associated __e__.
+-for each $\lambda$ find its associated vector __e__.
 
 ---
 
 ## With Computer Science
 
-At Web scale, few methods will still work!
+At the scale of the Web, few methods will still work!
 
 Ideas:
 
@@ -246,23 +273,54 @@ For better scalability, we will cover [Pagerank](https://en.wikipedia.org/wiki/P
 
 ## E-pairs with Numpy
 
-```python
-from numpy import linalg as LA
+```{python}
+import numpy as np
+
+# this is the specific submodule
+from numpy import linalg as la
 ```
 
+```{python}
+m = np.array((7, 5))
 
-```python
+m = [[1, 1, 1, 0, 0],
+	 [3, 3, 3, 0, 0],
+	 [4, 4, 4, 0, 0],
+	 [5, 5, 5, 0, 0],
+	 [0, 0, 0, 4, 4],
+	 [0, 0, 0, 5, 5],
+	 [0, 0, 0, 2, 2]
+	]
+```
+
+-----
+
+```{python}
 def find_eigenpairs(mat):
-	"""Test the quality of eigenpairs by Numpy
-	"""
-	n = len(mat)
+    """Test the quality of Numpy eigenpairs"""
+    n = len(mat)
 
-	m = len(mat[0])
+    # is it squared?
+    m = len(mat[0])
 
-	eig_vals, eig_vects = la.eig(mat)
+    eig_vals, eig_vects = la.eig(mat)
 
-	# they come in ascending order, take the last one on the right
-	dominant_eig = abs(eig_vals[-1])
+    # they come in ascending order, take the last one on the right
+    dominant_eig = abs(eig_vals[-1])
+    return dominant_eig
 ```
+
+-----
 
 E-values come normalized: $\sqrt{\lambda_1^2 + \dots \lambda_n^2} = 1$; hence we later multiply them by $\frac{1}{\sqrt{n}}$
+
+```{python}
+# lambda_1 = find_eigenpairs(m)
+
+# lambda_1
+```
+## Coda: non-norms
+
+$||\mathbf{x}||_0$ = \# of non-zero scalar values in $\mathbf{x}$
+
+$||\mathbf{x}||_\infty = max\{|x_{i}|\}$
