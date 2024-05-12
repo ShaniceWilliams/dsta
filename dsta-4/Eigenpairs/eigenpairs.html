@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="DSTA">
+
+<title>Eigenpairs</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="eigenpairs_files/libs/clipboard/clipboard.min.js"></script>
+<script src="eigenpairs_files/libs/quarto-html/quarto.js"></script>
+<script src="eigenpairs_files/libs/quarto-html/popper.min.js"></script>
+<script src="eigenpairs_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="eigenpairs_files/libs/quarto-html/anchor.min.js"></script>
+<link href="eigenpairs_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="eigenpairs_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="eigenpairs_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="eigenpairs_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="eigenpairs_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#eigenpairs" id="toc-eigenpairs" class="nav-link active" data-scroll-target="#eigenpairs">Eigenpairs</a>
+  <ul class="collapse">
+  <li><a href="#study-materials" id="toc-study-materials" class="nav-link" data-scroll-target="#study-materials">Study materials</a></li>
+  </ul></li>
+  <li><a href="#spectral-analysis" id="toc-spectral-analysis" class="nav-link" data-scroll-target="#spectral-analysis">Spectral Analysis</a>
+  <ul class="collapse">
+  <li><a href="#eigenpairs-1" id="toc-eigenpairs-1" class="nav-link" data-scroll-target="#eigenpairs-1">Eigenpairs</a></li>
+  <li><a href="#conditions-for-good-eigen-" id="toc-conditions-for-good-eigen-" class="nav-link" data-scroll-target="#conditions-for-good-eigen-">Conditions for <em>good</em> eigen-</a></li>
+  <li><a href="#underlying-idea-i" id="toc-underlying-idea-i" class="nav-link" data-scroll-target="#underlying-idea-i">Underlying idea, I</a></li>
+  <li><a href="#example-shear-mapping" id="toc-example-shear-mapping" class="nav-link" data-scroll-target="#example-shear-mapping">Example: shear mapping</a></li>
+  <li><a href="#activity-matrices-i" id="toc-activity-matrices-i" class="nav-link" data-scroll-target="#activity-matrices-i">Activity matrices, I</a></li>
+  <li><a href="#activity-matrices-ii" id="toc-activity-matrices-ii" class="nav-link" data-scroll-target="#activity-matrices-ii">Activity matrices, II</a></li>
+  </ul></li>
+  <li><a href="#norms-and-distances" id="toc-norms-and-distances" class="nav-link" data-scroll-target="#norms-and-distances">Norms and distances</a>
+  <ul class="collapse">
+  <li><a href="#euclidean-norm" id="toc-euclidean-norm" class="nav-link" data-scroll-target="#euclidean-norm">Euclidean norm</a></li>
+  <li><a href="#normalization" id="toc-normalization" class="nav-link" data-scroll-target="#normalization">Normalization</a></li>
+  </ul></li>
+  <li><a href="#computing-eigenpairs" id="toc-computing-eigenpairs" class="nav-link" data-scroll-target="#computing-eigenpairs">Computing Eigenpairs</a>
+  <ul class="collapse">
+  <li><a href="#with-maths" id="toc-with-maths" class="nav-link" data-scroll-target="#with-maths">With Maths</a></li>
+  <li><a href="#with-computer-science" id="toc-with-computer-science" class="nav-link" data-scroll-target="#with-computer-science">With Computer Science</a></li>
+  </ul></li>
+  <li><a href="#eigenpairs-in-python" id="toc-eigenpairs-in-python" class="nav-link" data-scroll-target="#eigenpairs-in-python">Eigenpairs in Python</a>
+  <ul class="collapse">
+  <li><a href="#e-pairs-with-numpy" id="toc-e-pairs-with-numpy" class="nav-link" data-scroll-target="#e-pairs-with-numpy">E-pairs with Numpy</a></li>
+  <li><a href="#coda-non-norms" id="toc-coda-non-norms" class="nav-link" data-scroll-target="#coda-non-norms">Coda: non-norms</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="eigenpairs.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div><div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://ale66.github.io/dsta/"><i class="bi bi-link-45deg"></i>Class page</a></li></ul></div><div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="./data/biostats.csv"><i class="bi bi-file-code"></i>Data</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Eigenpairs</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>DSTA </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="eigenpairs" class="level1">
+<h1>Eigenpairs</h1>
+<section id="study-materials" class="level2">
+<h2 class="anchored" data-anchor-id="study-materials">Study materials</h2>
+<p>I. Goodfellow, Y. Bengio and A. Courville:</p>
+<p><a href="https://www.deeplearningbook.org/">Deep Learning, MIT Press, 2016</a>.</p>
+<p>J. Lescovec, A. Rajaraman, J. Ullmann:</p>
+<p><a href="http://www.mmds.org/">Mining of Massive datasets, MIT Press, 2016</a>.</p>
+<p>The material covered here is presented in the excerpts available for download.</p>
+<!------------------------------------------------------------->
+</section>
+</section>
+<section id="spectral-analysis" class="level1">
+<h1>Spectral Analysis</h1>
+<section id="eigenpairs-1" class="level2">
+<h2 class="anchored" data-anchor-id="eigenpairs-1">Eigenpairs</h2>
+<p>If, given a matrix <span class="math inline">\(A\)</span> we find a real <span class="math inline">\(\lambda\)</span> and a vector <strong>e</strong> s.t.</p>
+<p><span class="math display">\[A\mathbf{e} = \lambda \mathbf{e}\]</span></p>
+<p>then <span class="math inline">\(\lambda\)</span> and <strong>e</strong> will be an eigenpair of A.</p>
+<p>. . .</p>
+<p>In principle, if A has rank n there should be n such pairs.</p>
+<p>. . .</p>
+<p>In practice, eigenpairs</p>
+<ul>
+<li><p>are always <em>costly</em> to find.</p></li>
+<li><p>they might have <span class="math inline">\(\lambda=0\)</span>: no information, or</p></li>
+<li><p><span class="math inline">\(\lambda\)</span> might not be a real number: no interpretation.</p></li>
+</ul>
+</section>
+<section id="conditions-for-good-eigen-" class="level2">
+<h2 class="anchored" data-anchor-id="conditions-for-good-eigen-">Conditions for <em>good</em> eigen-</h2>
+<p>A square matrix <em>A</em> is called <em>positive semidefinite</em> when for any <strong>x</strong> we have</p>
+<p><span class="math display">\[\mathbf{x}^T A \mathbf{x} \ge 0\]</span></p>
+<p>In such case its eigenvalues are non-negative: <span class="math inline">\(\lambda_i\ge 0\)</span>.</p>
+</section>
+<section id="underlying-idea-i" class="level2">
+<h2 class="anchored" data-anchor-id="underlying-idea-i">Underlying idea, I</h2>
+<p>In Geometry, applying a matrix to a vector, <span class="math inline">\(A\mathbf{x}\)</span>, creates all sorts of alteration to the space, e.g,</p>
+<ul>
+<li><p>rotation</p></li>
+<li><p>deformation</p></li>
+</ul>
+<p>Eigenvectors, i.e., solutions to <span class="math inline">\(A\mathbf{e} = \lambda \mathbf{e}\)</span></p>
+<p>describe the direction along which matrix A operates an <strong>expansion</strong></p>
+</section>
+<section id="example-shear-mapping" class="level2">
+<h2 class="anchored" data-anchor-id="example-shear-mapping">Example: shear mapping</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [[<span class="dv">1</span>, <span class="fl">.27</span>],</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>     [<span class="dv">0</span>,   <span class="dv">1</span>]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>deforms a vector by increading the first dimension by a quantity proportional to the value of the second dimension:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+    x\\
+    y
+\end{bmatrix}
+\longrightarrow
+\begin{bmatrix}
+    x + \frac{3}{11}y\\
+    y
+\end{bmatrix}
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imgs/mona_lisa.png" class="img-fluid figure-img"></p>
+<figcaption><a href="https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors"></a></figcaption>
+</figure>
+</div>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imgs/mona_lisa.png" class="img-fluid figure-img"></p>
+<figcaption><a href="https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors"></a></figcaption>
+</figure>
+</div>
+<p>The blue line is unchanged:</p>
+<ul>
+<li><p>an <span class="math inline">\([x, 0]^T\)</span> eigenvector</p></li>
+<li><p>corresponding to <span class="math inline">\(\lambda=1\)</span></p></li>
+</ul>
+</section>
+<section id="activity-matrices-i" class="level2">
+<h2 class="anchored" data-anchor-id="activity-matrices-i">Activity matrices, I</h2>
+<p>Under certains conditions:</p>
+<p>-the eigenpairs exists,</p>
+<p>-e-values are real, non-negative numbers (0 is ok), and</p>
+<p>-e-vectors are orthogonal with each other:</p>
+<p>. . .</p>
+<p>User-activity matrices normally meet those conditions!</p>
+</section>
+<section id="activity-matrices-ii" class="level2">
+<h2 class="anchored" data-anchor-id="activity-matrices-ii">Activity matrices, II</h2>
+<p>If an activity matrix has <em>good</em> eigenpairs,</p>
+<p>. . .</p>
+<p>each e-vector represents a <em>direction</em></p>
+<p>we interpret those directions as <em>topics</em> that hidden (latent) within the data.</p>
+<p>e-values <em>expand</em> one’s affiliation to a specific <em>topic</em>.</p>
+</section>
+</section>
+<section id="norms-and-distances" class="level1">
+<h1>Norms and distances</h1>
+<section id="euclidean-norm" class="level2">
+<h2 class="anchored" data-anchor-id="euclidean-norm">Euclidean norm</h2>
+<p>Pythagora’s theorem, essentially.</p>
+<p><span class="math inline">\(||\mathbf{x}|| = \sqrt{\mathbf{x}^T\mathbf{x}} = \sqrt{\sum_{i=1}^m x_i^2}\)</span></p>
+<p><img src="./imgs/euclid-1.png" class="img-fluid"></p>
+<p>. . .</p>
+<p>Generalisation:</p>
+<p><span class="math inline">\(||\mathbf{x}||_p = (|x_1|^p + |x_1|^p + \dots |x_m|^p)^\frac{1}{p} = (\sum_{i=1}^m |x_i|^p)^\frac{1}{p}\)</span></p>
+<hr>
+<p><img src="./imgs/euclid-2.png" class="img-fluid"></p>
+<p>. . .</p>
+<p>The Frobenius norm <span class="math inline">\(||\cdot ||_F\)</span> extends <span class="math inline">\(||\cdot ||_2\)</span> to matrices:</p>
+<p><span class="math inline">\(||\mathbf{A}||_F = \sqrt{\sum_{i=1}^m \sum_{j=1}^n |a_{ij}|^2}\)</span></p>
+</section>
+<section id="normalization" class="level2">
+<h2 class="anchored" data-anchor-id="normalization">Normalization</h2>
+<p>The <em>unit</em> or <em>normalized</em> vector of <span class="math inline">\(\mathbf{x}\)</span></p>
+<p><span class="math display">\[
+\mathbf{u} = \frac{\mathbf{x}}{||\mathbf{x}||} = (\frac{1}{||\mathbf{x}||})\mathbf{x}
+\]</span></p>
+<ul>
+<li><p>has the same direction of the original</p></li>
+<li><p>its norm is constructed to be 1.</p></li>
+</ul>
+<!--------------------------------------------------->
+</section>
+</section>
+<section id="computing-eigenpairs" class="level1">
+<h1>Computing Eigenpairs</h1>
+<section id="with-maths" class="level2">
+<h2 class="anchored" data-anchor-id="with-maths">With Maths</h2>
+<p><span class="math display">\[
+M\mathbf{e} = \lambda \mathbf{e}
+\]</span></p>
+<p>. . .</p>
+<p>Handbook solution: solve the equivalent system</p>
+<p><span class="math display">\[
+(M - \lambda \mathbf{I})\mathbf{e} = \mathbf{0}
+\]</span></p>
+<p>. . .</p>
+<p>Either of the two factors should be 0. Hence, a non-zero vector <strong>e</strong> is associated to a solution of</p>
+<p><span class="math display">\[
+|M - \lambda \mathbf{I}| = 0
+\]</span></p>
+<hr>
+<p><span class="math display">\[
+|M - \lambda \mathbf{I}| = 0
+\]</span></p>
+<p>In Numerical Analysis many methods are available.</p>
+<p>Their general algorithmic structure:</p>
+<p>-find the <span class="math inline">\(\lambda\)</span>s that make <span class="math inline">\(|\dots | = 0\)</span>, then</p>
+<p>-for each <span class="math inline">\(\lambda\)</span> find its associated vector <strong>e</strong>.</p>
+<hr>
+</section>
+<section id="with-computer-science" class="level2">
+<h2 class="anchored" data-anchor-id="with-computer-science">With Computer Science</h2>
+<p>At the scale of the Web, few methods will still work!</p>
+<p>Ideas:</p>
+<ol type="1">
+<li><p>find the e-vectors first, with an iterated method.</p></li>
+<li><p>interleave iteration with control on the <em>expansion in value</em></p></li>
+</ol>
+<p>. . .</p>
+<p><span class="math inline">\(\mathbf{x_0} = [1, 1, \dots 1]^T\)</span></p>
+<p>. . .</p>
+<p><span class="math inline">\(\mathbf{x_{k+1}} = \frac{M\mathbf{x}_k}{||M\mathbf{x}_k||}\)</span></p>
+<p>. . .</p>
+<p>until an approximate fix point: <span class="math inline">\(x_{l+1} \approx x_{l}\)</span>.</p>
+<hr>
+<p>Now, eliminate the contribution of the first eigenpair:</p>
+<p><span class="math display">\[
+M^* = M - \lambda_1^\prime \mathbf{x}_1 \mathbf{x}_1^T
+\]</span></p>
+<p>(since <span class="math inline">\(\mathbf{x}_1\)</span> is a column vector, <span class="math inline">\(\mathbf{x}_1^T \mathbf{x}_1\)</span> will be a scalar: its norm. Vice versa, <span class="math inline">\(\mathbf{x}_1 \mathbf{x}_1^T\)</span> will be a matrix)</p>
+<p>. . .</p>
+<p>Now, we repeat the iteration on <span class="math inline">\(M^*\)</span> to find the second eigenpair.</p>
+<p>Times are in <span class="math inline">\(\Theta(dn^2)\)</span>.</p>
+<p>For better scalability, we will cover <a href="https://en.wikipedia.org/wiki/PageRank">Pagerank</a> later.</p>
+<!------------------------------------>
+</section>
+</section>
+<section id="eigenpairs-in-python" class="level1">
+<h1>Eigenpairs in Python</h1>
+<section id="e-pairs-with-numpy" class="level2">
+<h2 class="anchored" data-anchor-id="e-pairs-with-numpy">E-pairs with Numpy</h2>
+<div id="56f96a92" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this is the specific submodule</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> linalg <span class="im">as</span> la</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="6b55937b" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> np.array((<span class="dv">7</span>, <span class="dv">5</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>     [<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>     [<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>     [<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>     [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">4</span>],</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>     [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">5</span>],</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>     [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>]</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<div id="b06663d2" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_eigenpairs(mat):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Test the quality of Numpy eigenpairs"""</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(mat)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># is it squared?</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> <span class="bu">len</span>(mat[<span class="dv">0</span>])</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    eig_vals, eig_vects <span class="op">=</span> la.eig(mat)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># they come in ascending order, take the last one on the right</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    dominant_eig <span class="op">=</span> <span class="bu">abs</span>(eig_vals[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dominant_eig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<p>E-values come normalized: <span class="math inline">\(\sqrt{\lambda_1^2 + \dots \lambda_n^2} = 1\)</span>; hence we later multiply them by <span class="math inline">\(\frac{1}{\sqrt{n}}\)</span></p>
+<div id="26dc5a86" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lambda_1 = find_eigenpairs(m)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># lambda_1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="coda-non-norms" class="level2">
+<h2 class="anchored" data-anchor-id="coda-non-norms">Coda: non-norms</h2>
+<p><span class="math inline">\(||\mathbf{x}||_0\)</span> = # of non-zero scalar values in <span class="math inline">\(\mathbf{x}\)</span></p>
+<p><span class="math inline">\(||\mathbf{x}||_\infty = max\{|x_{i}|\}\)</span></p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
