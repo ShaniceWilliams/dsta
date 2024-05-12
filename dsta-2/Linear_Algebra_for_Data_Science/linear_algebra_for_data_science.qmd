@@ -1,7 +1,7 @@
 ---
 title: "Math concepts for Data Science"
 lang: en
-author: AP 
+author: DSTA
 format:
   revealjs: 
     theme: solarized
