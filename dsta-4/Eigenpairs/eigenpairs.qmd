@@ -154,7 +154,7 @@ Pythagora's theorem, essentially.
 
 $||\mathbf{x}|| = \sqrt{\mathbf{x}^T\mathbf{x}} = \sqrt{\sum_{i=1}^m x_i^2}$
 
-![](./imgs/euclid-1.png)
+![](./imgs/euclid-1.png){height="200"}
 
 . . .
 
