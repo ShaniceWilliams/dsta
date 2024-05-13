@@ -106,12 +106,12 @@ Day | Outlook | Temp. | Hum. | Wind | Play?
 
 Consider three sets, on the basis of the *Outlook* dimension:
 
-![Example A](./imgs/gini_example-a.png)
+![](./imgs/gini_example-a.png)
 
 -----
 
-![Example A](./imgs/gini_example-b.png)
+![](./imgs/gini_example-b.png)
 
-where ``G(Outlook)`` is the weighted sum of the impurities of a labelling based on splitting along the values of ``Outlook`` (and the random-labelling algorithm)
+where `G(Outlook)` is the weighted sum of the impurities of a labelling based on splitting along the values of `Outlook` (and the random-labelling algorithm)
 
 Q: can we do better? E.g., Majority voting?
