@@ -109,8 +109,6 @@ A larger k does not always mean a better classification
 
 ![](imgs/knn_boundary_varying_k.png)
 
-examples ending up in wrong area are essentially deactivated.
-
 ## Observations
 
 k-NN 
@@ -122,7 +120,7 @@ k-NN
 - there is no standard way to choose k, yet it may greatly influence the outcome: 
   - we face hyperparameter optimization.
 
-- on large training datasets, even 1-NN approaches $2*\text{irreducible_error_rate}$.
+- on large training datasets, even 1-NN approaches the *irreducible_error_rate* (2x).
 
 ## Trade-offs
 
