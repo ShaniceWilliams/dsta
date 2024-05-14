@@ -1,0 +1,303 @@
+---
+title: "Decision trees"
+lang: en
+author: DSTA 
+format:
+  revealjs: 
+    theme: solarized
+    css: ../../styles/dsta_slides.css
+    slide-number: true
+    slide-level: 2
+    # title-slide-attributes:
+      # data-background-image: ../../styles/bbk-logo.svg
+    code-fold: false
+    echo: true
+    # smaller: true
+    scrollable: true
+  html:
+    toc: true
+    code-fold: false
+    anchor-sections: true
+    other-links:
+      - text: Class page
+        href: https://ale66.github.io/dsta/
+jupyter: python3
+---
+
+## Decision trees
+
+- A simple-yet-effective classification algorithm: CART
+- it introduces us to predictive modeling
+
+## Materials
+
+Ch. 3 of Provost-Fawcett's [Data Science for Business](https://www.researchgate.net/publication/256438799_Data_Science_for_Business)
+
+- introduces CART by example
+
+- illustrates the use of Entropy
+
+- it shows the training and testing of a *predictive model.*
+
+<!------------------------>
+# Models
+
+## A simplified representation of reality
+
+A predictive model is a formula for estimating the unknown value of interest, often called the *target* attribute.
+
+. . .
+
+Regression: numerical target
+
+. . .
+
+Classification: class membership, e.g., Class-probability estimation
+
+-----
+
+A descriptive model is a formula for estimating the underlying phenomena and causal connections between values.
+
+Descriptive modeling often is used to work towards a causal understanding of the data-generating process (e.g., why do users watch Sci-Fi sagas?)
+
+## Supervised segmentation
+
+divide the dataset into  *segments* (sets of rows) by the value of their output variable.
+
+. . .
+
+*If the segmentation is done using values of variables that will be known when the target is not then these segments can be used to predict the value of the target.*
+
+Example: the golf days example seen when studying Gini.
+
+Day | Outlook | Temp. | Hum. | Wind | Play?
+|---|---|---|---|---|---|
+1 | Sunny | Hot | High | Weak   | No
+2 | Sunny | Hot | High | Strong | ?
+
+## Questions
+
+What are the variables that contain important information about the target variable?
+
+Can they be selected automatically?
+
+## Selecting informative attributes
+
+![Fig. 3.2](./imgs/pf-figure-3-2.png)
+
+-----
+
+![Fig. 3.2](./imgs/pf-figure-3-2.png)
+
+- Attributes
+
+  - head-shape: {square, circular}
+  - body-shape: {rectangular, oval}
+  - body-color: {gray, white}
+
+- Target
+
+  - write-off: {yes, no}
+
+Measure:
+
+*purity of segments:* all datapoints have the same target variable value.
+
+## Complications
+
+1. Non-binary attributes in binary classification
+
+2. non-discrete attributes
+
+3. attributes seldom split a dataset perfectly.
+
+4. if the second person wasn't there, *body-color=gray* would split off a pure, single-datapoint segment. Is it desirable? (see last slide)
+
+Let's focus on 3.
+
+## The importance of purity
+
+if an unlabelled datapoint is with a pure segment, we safely assigh the same target variable valus of its segment.
+
+Day | Outlook | Temp. | Hum. | Wind | Play?
+|---|---|---|---|---|---|
+1 | Sunny | Hot | High | Strong | No
+2 | Sunny | Hot | High | Strong | No
+3 | Sunny | Hot | High | Strong | No
+6 | Sunny | Hot | High | Strong | ?
+
+Predict 'No.'
+
+## Impurity
+
+Day | Outlook | Temp. | Hum. | Wind | Play?
+|---|---|---|---|---|---|
+1 | Sunny | Hot | High | Strong | No
+2 | Sunny | Hot | High | Strong | No
+3 | Sunny | Hot | High | Strong | No
+4 | Sunny | Hot | High | Strong | Yes
+6 | Sunny | Hot | High | Strong | ?
+
+assign the target value with the same probability as the frequency in the segment:
+
+$Pr[\textrm{Play}_6='No']=\frac{3}{4}$, $Pr[\textrm{Play}_6='Yes']=\frac{1}{4}.$
+
+(alternative: majority voting?)
+
+## Entropy and impurity
+
+![](./imgs/pf-figure-3-3.png)
+
+We would improve prediction by decreasing segment impurity. 
+
+Entropy (or Gini impurity) *drives* segmentation.
+
+<!-- -->
+## Information gain
+
+## Definition
+
+IG measures how much much an attribute improves entropy over the whole segmentation it creates.
+
+![Fig. 3.4](./imgs/pf-figure-3-4.png)
+
+How much purer are the children wrt. their parent segment?
+
+-----
+
+![Fig. 3.5](./imgs/pf-figure-3-5.png)
+
+-----
+
+IG(parent, children) = H(parent) - $[prop(c_a)\times H(c_a) + prop(c_b)\times H(c_b) + \dots ]$
+
+where $prop(c_x)$ is the proportion of el. assigned to $c_i:$ $\frac{|c_i|}{n}$ 
+
+. . .
+
+$IG(P, C)$ is connected with Kullback-Leibler divergence.
+
+-----
+
+![Fig. 3.4](./imgs/pf-figure-3-4.png)
+
+H(parent) = 0.99
+
+H(left) = 0.39
+
+H(right) = 0.79
+
+$IG(p, C) = 0.99 -[13/30\cdot 0.39 + 17/30 \cdot 0.79] = 0.37$
+
+Notice the *discretization* of the numerical var. we *split on*
+
+-----
+
+![Fig. 3.5](./imgs/pf-figure-3-5.png)
+
+H(parent) = 0.99
+
+H(left) = 0.54
+
+H(center) = 0.97
+
+H(right) = 0.98
+
+IG(p, C) = 0.13
+
+## Numeric targets
+
+Discretization may reduce numerical dimensions to discrete ones  
+
+In regression, variance works as the analogous of information entropy.
+
+<!------------------------>
+# Attr. selection with IG
+
+## By example
+
+A graphical method deployed to visualize Information gain:
+
+The shaded area represents Entropy.
+
+the white area 'reclaimed' from the shade is the Information gain at each attempt.
+
+-----
+
+[![Dataset](./imgs/uc-irvine.png)](https://archive.ics.uci.edu/ml/datasets/mushroom)
+
+total: 8124 instances
+
+edible: 4208 (51.8%)
+
+poisonous: 3916 (48.2%)
+
+H = $-[0.518\log 0.518 + 0.482\log 0.482]$ = $-[.518\cdot -.949 + .482\cdot -1.053]$ = .999
+
+-----
+
+![Fig. 3.6](./imgs/pf-figure-3-6.png)
+
+-----
+
+![Fig. 3.7](./imgs/pf-figure-3-7.png)
+
+<!-- -->
+# Decision trees (DTs)
+
+## DT: iterated supervised segmentation
+
+node $\rightarrow$ leaves represents a segmentation that increases *purity,* i.e., decreases information Entropy or Gini impurity.
+
+. . .
+
+Iterate until the set of all root $\rightarrow$ leaf trajectories gives a complete classification.
+
+. . .
+
+Measure: total entropy of the set of leaf segments.
+
+__Decision tree:__ a set of if-then rules over attribute (or discretized) values
+
+Each observation falls into 1! leaf, and each leaf is uniquely defined by a set of rules.  
+
+## CART, visually
+
+![Fig. 3.2](./imgs/pf-figure-3-2.png)
+
+![Fig. 3.11](./imgs/pf-figure-3-11.png)
+
+-----
+
+![Fig. 3.13](./imgs/pf-figure-3-13.png)
+
+-----
+
+![Fig. 3.12](./imgs/pf-figure-3-12.png)
+
+-----
+
+![Fig. 3.11](./imgs/pf-figure-3-11.png)
+
+---|---
+![Fig. 3.13](./imgs/pf-figure-3-13.png) | [Fig. 3.12](./imgs/pf-figure-3-12.png)
+
+-----
+
+![Fig. 3.14](./imgs/pf-figure-3-14.png)
+
+-----
+
+## Att. seldom split a group perfectly
+
+Even if one subgroup happens to be pure, the other may not!
+
+![Fig. 3.2](./imgs/pf-figure-3-2.png)
+
+If the second person were not there, then ``body-color=gray`` would create a pure segment (write-off=no).
+
+However, the other associated segment, ``body-color=white``, still is not pure.
+
+``body-color=gray`` only splits off one single data point into the pure subset.  
+
+Is this better than another split that does not produce any pure subset, but reduces the impurity more broadly?  
