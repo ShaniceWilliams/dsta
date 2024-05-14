@@ -285,6 +285,11 @@ Numpy allows specifying the respective action associated to `True` and `False`
 ```{python}
 l = np.array([np.arange(9)])
 
+l
+```
+
+```{python}
+# deserialise the arrat into a square matrix
 l = l.reshape((3, 3))
 
 l
