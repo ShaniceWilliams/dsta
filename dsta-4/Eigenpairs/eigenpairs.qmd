@@ -281,7 +281,8 @@ from numpy import linalg as la
 ```
 
 ```{python}
-m = np.array((7, 5))
+# create a 'blank' matrix
+m = np.zeros([7, 5])
 
 m = [[1, 1, 1, 0, 0],
 	 [3, 3, 3, 0, 0],
