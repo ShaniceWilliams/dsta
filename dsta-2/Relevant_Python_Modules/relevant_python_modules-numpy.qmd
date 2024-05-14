@@ -1,5 +1,5 @@
 ---
-title: "Relevant Python modules: Pandas"
+title: "Relevant Python modules: Numpy"
 lang: en
 author: AM 
 format:
@@ -255,11 +255,13 @@ The Boolean filter itself can be represented by a Numpy array
 ```{python}
 l = np.array([np.arange(9)])
 
+l
+```
+```{python}
 l.reshape((3, 3))
 
 l
 ```
-
 ```{python}
 # Let's apply a high-pass filter
 
