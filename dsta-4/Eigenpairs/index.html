@@ -523,6 +523,9 @@ DSTA
 <img data-src="./imgs/euclid-2.png" class="r-stretch"><div class="fragment">
 <p>The Frobenius norm <span class="math inline">\(||\cdot ||_F\)</span> extends <span class="math inline">\(||\cdot ||_2\)</span> to matrices:</p>
 <p><span class="math inline">\(||\mathbf{A}||_F = \sqrt{\sum_{i=1}^m \sum_{j=1}^n |a_{ij}|^2}\)</span></p>
+<p>Also used in practice:</p>
+<p><span class="math inline">\(||\mathbf{x}||_0\)</span> = # of non-zero scalar values in <span class="math inline">\(\mathbf{x}\)</span></p>
+<p><span class="math inline">\(||\mathbf{x}||_\infty = max\{|x_{i}|\}\)</span></p>
 </div>
 </section>
 <section id="normalization" class="slide level2">
@@ -609,13 +612,13 @@ M^* = M - \lambda_1^\prime \mathbf{x}_1 \mathbf{x}_1^T
 </section>
 <section id="e-pairs-with-numpy" class="slide level2">
 <h2>E-pairs with Numpy</h2>
-<div id="c4d3b2b4" class="cell" data-execution_count="1">
+<div id="6111d1d1" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href=""></a></span>
 <span id="cb2-3"><a href=""></a><span class="co"># this is the specific submodule</span></span>
 <span id="cb2-4"><a href=""></a><span class="im">from</span> numpy <span class="im">import</span> linalg <span class="im">as</span> la</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="59a602b3" class="cell" data-execution_count="2">
+<div id="519cb92d" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="co"># create a 'blank' matrix</span></span>
 <span id="cb3-2"><a href=""></a>m <span class="op">=</span> np.zeros([<span class="dv">7</span>, <span class="dv">5</span>])</span>
 <span id="cb3-3"><a href=""></a></span>
@@ -631,7 +634,7 @@ M^* = M - \lambda_1^\prime \mathbf{x}_1 \mathbf{x}_1^T
 </section>
 <section class="slide level2">
 
-<div id="9bc1c431" class="cell" data-execution_count="3">
+<div id="fcd93d7c" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="kw">def</span> find_eigenpairs(mat):</span>
 <span id="cb4-2"><a href=""></a>    <span class="co">"""Test the quality of Numpy eigenpairs"""</span></span>
 <span id="cb4-3"><a href=""></a>    n <span class="op">=</span> <span class="bu">len</span>(mat)</span>
@@ -639,26 +642,25 @@ M^* = M - \lambda_1^\prime \mathbf{x}_1 \mathbf{x}_1^T
 <span id="cb4-5"><a href=""></a>    <span class="co"># is it squared?</span></span>
 <span id="cb4-6"><a href=""></a>    m <span class="op">=</span> <span class="bu">len</span>(mat[<span class="dv">0</span>])</span>
 <span id="cb4-7"><a href=""></a></span>
-<span id="cb4-8"><a href=""></a>    eig_vals, eig_vects <span class="op">=</span> la.eig(mat)</span>
-<span id="cb4-9"><a href=""></a></span>
-<span id="cb4-10"><a href=""></a>    <span class="co"># they come in ascending order, take the last one on the right</span></span>
-<span id="cb4-11"><a href=""></a>    dominant_eig <span class="op">=</span> <span class="bu">abs</span>(eig_vals[<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb4-12"><a href=""></a>    <span class="cf">return</span> dominant_eig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-8"><a href=""></a>    <span class="cf">if</span> n<span class="op">==</span>m:</span>
+<span id="cb4-9"><a href=""></a>      eig_vals, eig_vects <span class="op">=</span> la.eig(mat)</span>
+<span id="cb4-10"><a href=""></a>    <span class="cf">else</span>:</span>
+<span id="cb4-11"><a href=""></a>      <span class="co"># force to be squared</span></span>
+<span id="cb4-12"><a href=""></a>      eig_vals, eig_vects <span class="op">=</span> la.eig(mat<span class="op">@</span>mat.T)</span>
+<span id="cb4-13"><a href=""></a></span>
+<span id="cb4-14"><a href=""></a>    <span class="co"># they come in ascending order, take the last one on the right</span></span>
+<span id="cb4-15"><a href=""></a>    dominant_eig <span class="op">=</span> <span class="bu">abs</span>(eig_vals[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb4-16"><a href=""></a>    <span class="cf">return</span> dominant_eig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section class="slide level2">
-
+<section id="older-versions" class="slide level2">
+<h2>Older versions:</h2>
 <p>E-values come normalized: <span class="math inline">\(\sqrt{\lambda_1^2 + \dots \lambda_n^2} = 1\)</span>; hence we later multiply them by <span class="math inline">\(\frac{1}{\sqrt{n}}\)</span></p>
-<div id="d368bdd6" class="cell" data-execution_count="4">
+<div id="24d9271c" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="co"># lambda_1 = find_eigenpairs(m)</span></span>
 <span id="cb5-2"><a href=""></a></span>
 <span id="cb5-3"><a href=""></a><span class="co"># lambda_1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="coda-non-norms" class="slide level2">
-<h2>Coda: non-norms</h2>
-<p><span class="math inline">\(||\mathbf{x}||_0\)</span> = # of non-zero scalar values in <span class="math inline">\(\mathbf{x}\)</span></p>
-<p><span class="math inline">\(||\mathbf{x}||_\infty = max\{|x_{i}|\}\)</span></p>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
