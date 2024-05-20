@@ -203,7 +203,7 @@ The most volume (and thus weight) is in the external ring (the equators)
 
 At a fixed radius (r=1), raising dimensionality *above 5* in fact [decreases the volume](https://upload.wikimedia.org/wikipedia/commons/6/6c/Hypersphere_volume_and_surface_area_graphs.svg).
 
-![](./imgs/volume+surface.svg)
+![](./imgs/volume+surface.png)
 
 Hyperballs deflate.
 
