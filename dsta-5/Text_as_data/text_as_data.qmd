@@ -1,8 +1,31 @@
 ---
-author: DSTA
-title: "Text As Data"
+title: "Text as data"
 lang: en
+author: DSTA 
+format:
+  revealjs: 
+    theme: solarized
+    css: ../../styles/dsta_slides.css
+    slide-number: true
+    slide-level: 2
+    # title-slide-attributes:
+      # data-background-image: ../../styles/bbk-logo.svg
+    code-fold: false
+    echo: true
+  html:
+    toc: true
+    code-fold: false
+    anchor-sections: true
+    other-links:
+      - text: Class page
+        href: https://ale66.github.io/dsta/
+    code-links:
+      - text: Data
+        icon: file-code
+        href: https://ale66.github.io/dsta/
+jupyter: python3
 ---
+
 
 ## Big picture
 
@@ -82,15 +105,12 @@ With column norm., we analyse a document by its entropy.
 
 ## Example application: text compression
 
-- in languages, the occurrence of symbols is statistically uneven
+In languages, the occurrence of symbols is statistically imbalanced.
 
-(Zipf's law: if the most frequent word appears k times, then the $i$-th word by freq. appears $\frac{k}{i}$ times)
+[![](/imgs/letters-frequency.png)](https://en.wikipedia.org/wiki/Letter_frequency)
 
-<img src="https://www.dcs.bbk.ac.uk/~ale/dsta/dsta-5/imgs-text/letters-frequency.svg" alt="Letters frequencies" height=300>
 
-![Letter frequencies](/imgs-text/letters-frequency.svg)
-
-[Source](https://en.wikipedia.org/wiki/Letter_frequency)
+Zipf's law: if the most frequent word appears k times, then the $i$-th word by freq. appears $\frac{k}{i}$ times.
 
 -----
 
@@ -112,7 +132,7 @@ A collection of documents taken to be representative of the target language
 
 -----
 
-![Letter frequencies](./imgs/letters-frequency.svg)
+![](./imgs/letters-frequency.png)
 
 Encoding compressed from $\log_2 27 \approx 4.75$ to $H[Pr[l_i]]\approx 4.22$
 
@@ -243,7 +263,7 @@ The 3-gram __ent__ appears more often than __uzb.__
 
 - coding is __prefix-free:__ no code is the prefix of another
 
-- __greedy__ algorithm: cost grows with $\propto \cdot n\log n$
+- __greedy__ algorithm: cost grows with $n\log n$
 
 <!-- -------------------------------- -->
 # Information Retrieval
@@ -270,7 +290,7 @@ keyword-based ranking (doc. is a __bag of words)__
 
 ## Stopwords
 
-![Stopwords](./imgs/stopwords.png)
+![](./imgs/stopwords.png)
 
 ## Term frequency (TF)
 
