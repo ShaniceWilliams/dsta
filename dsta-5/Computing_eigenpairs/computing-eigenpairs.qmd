@@ -1,7 +1,31 @@
 ---
-lang: en
-author: DSTA
 title: "Computing Eigenpairs"
+lang: en
+author: DSTA 
+format:
+  pdf:
+    papersize: A4
+    number-sections: true
+    pdf-engine: pdflatex
+  revealjs: 
+    theme: solarized
+    css: ../../styles/dsta_slides.css
+    slide-number: true
+    slide-level: 2
+    # title-slide-attributes:
+      # data-background-image: ../../styles/bbk-logo.svg
+    code-fold: false
+    echo: true
+    # smaller: true
+    scrollable: true
+  html:
+    toc: true
+    code-fold: false
+    anchor-sections: true
+    other-links:
+      - text: Class page
+        href: https://ale66.github.io/dsta/
+jupyter: python3
 ---
 
 <!-------------------------------------------------------------->
@@ -178,8 +202,6 @@ Try the following program and observe the phenomenon.
 
  MtM = np.matmul(M.T, M)
 
- print(MtM)
-
  w,v = LA.eig(MtM)
 
  print(w)
@@ -190,14 +212,14 @@ Try the following program and observe the phenomenon.
  print(ME)
 ```
 
-## Iris example, I
+## Iris: rotation
 
 The principal e-pair (see above) gives the direction of most spread
 
-![Iris rotation](./imgs/zm-fig71-iris-rotation.png)
+![](./imgs/zm-fig71-iris-rotation.png)
 
-## Iris example, II
+## Iris: compression
 
 The principal e-pair (see above) gives the best 3D-to-1D approximation
 
-![Iris compression](./imgs/zm-fig72-iris-compression.png)
+![](./imgs/zm-fig72-iris-compression.png)

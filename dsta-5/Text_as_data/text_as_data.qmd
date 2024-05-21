@@ -3,6 +3,10 @@ title: "Text as data"
 lang: en
 author: DSTA 
 format:
+  pdf:
+    papersize: A4
+    number-sections: true
+    pdf-engine: pdflatex
   revealjs: 
     theme: solarized
     css: ../../styles/dsta_slides.css
@@ -12,16 +16,14 @@ format:
       # data-background-image: ../../styles/bbk-logo.svg
     code-fold: false
     echo: true
+    # smaller: true
+    scrollable: true
   html:
     toc: true
     code-fold: false
     anchor-sections: true
     other-links:
       - text: Class page
-        href: https://ale66.github.io/dsta/
-    code-links:
-      - text: Data
-        icon: file-code
         href: https://ale66.github.io/dsta/
 jupyter: python3
 ---
@@ -105,9 +107,9 @@ With column norm., we analyse a document by its entropy.
 
 ## Example application: text compression
 
-In languages, the occurrence of symbols is statistically imbalanced.
+In languages, the occurrence of symbols is [statistically imbalanced](https://en.wikipedia.org/wiki/Letter_frequency):
 
-[![](/imgs/letters-frequency.png)](https://en.wikipedia.org/wiki/Letter_frequency)
+![](./imgs/letters-frequency.png)
 
 
 Zipf's law: if the most frequent word appears k times, then the $i$-th word by freq. appears $\frac{k}{i}$ times.
