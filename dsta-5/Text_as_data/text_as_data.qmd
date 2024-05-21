@@ -44,8 +44,8 @@ __Love is in the eye of the beholder.__
 __But good looks are down to science... sort of.__
 
 __Ah, the chest. The part of the body most men would like to grow.
-Luckily, you have come to the right place. We really do know a thing or two about building muscle. 
-Take your pick from the workouts below to stretch your chest.__ 
+Luckily, you have come to the right place. We really do know a thing or two about building muscle.
+Take your pick from the workouts below to stretch your chest.__
 
 <!-- ----->
 # From Text to numerical methods
@@ -143,11 +143,9 @@ The 3-gram __ent__ appears more often than __uzb.__
 </tr>
 </table>
 
-
 . . .
 
 4. Prefix "1" to the existing codes; encode the third-least freq. letter as 0:
-
 
 <table>
 <tr>	
@@ -172,11 +170,9 @@ The 3-gram __ent__ appears more often than __uzb.__
 </tr>
 </table>
 
-
 -----
 
 5. Prefix "1" to all; encode the fourth-least frequent letter as 0 again:
-
 
 <table>
 <tr>	
@@ -310,7 +306,7 @@ $$TFIDF(q_i, d_j, C) = TF(q_i, d_j) \cdot IDF(q_i, C)$$
 
 . . .
 
-For frequent terms (after stopwords) 
+For frequent terms (after stopwords)
 we can _smooth_ $IDF(q_i, C)$ to $\log (1+ \frac{N}{n(q_i)})$
 
 ## Advanced tools
