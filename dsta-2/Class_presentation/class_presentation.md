@@ -1,7 +1,27 @@
 ---
-lang: en
-author: DSTA
 title: "Module introduction"
+lang: en
+author: AP 
+format:
+  revealjs: 
+    theme: solarized
+    css: ../../styles/dsta_slides.css
+    slide-number: true
+    slide-level: 2
+    # title-slide-attributes:
+      # data-background-image: ../../styles/bbk-logo.svg
+    code-fold: false
+    echo: true
+    # smaller: true
+    scrollable: true
+  html:
+    toc: true
+    code-fold: false
+    anchor-sections: true
+    other-links:
+      - text: Class page
+        href: https://ale66.github.io/dsta/
+jupyter: python3
 ---
 
 ## Data Science: Techniques and Applications (DSTA)
@@ -139,7 +159,7 @@ In view of the novelty of the approach, marks will be awarded generously, but al
 
 For the first time, the final test will take the form of an in-class, multiple-choice test via Codio/ Moodle.
 
-On the final Week 11 (July 2nd) at 19:00 for about 60/80 minutes.
+On the final Week 11 (July 2nd) at 18:00 for about 60/80 minutes (notice the time change wrt. the in-class presentation).
 
 20 questions on the 20 advanced units: from 4.d to 10.c but excluding the notebooks on 7.d, 8.d, 9.d and 10.d (see the [online calendar](https://github.com/ale66/dsta)).
 

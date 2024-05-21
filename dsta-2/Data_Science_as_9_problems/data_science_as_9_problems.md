@@ -151,9 +151,7 @@ Example research work on [Social media profiling](https://ieeexplore.ieee.org/ab
 
 7. Link prediction
 
-__Instance:__
-
-* a dynamical [graph (network) $\mathbf{G}$](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)) , i.e., a sequence
+__Instance:__  a dynamical [graph (network) $\mathbf{G}$](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)) , i.e., a sequence
 
 $<V, E>$,
 
@@ -161,17 +159,15 @@ $<V, E^\prime=E+\{(u,v)\}>$,
 
 $<V, E^{\prime\prime}=E^\prime+\{(r,s)\}>\dots$
 
-![From wikimedia](./imgs/network.png)
+![](./imgs/network.png)
 
-__Question:__
+-----
 
-* what is the next link to be created?
-
-. . .
+__Question:__  what is the next link to be created?
 
 What YouTube video will you watch next?
 
-Alternatives: predict the __strength__ of the new link; l. deletion.
+Alternatives: predict the __strength__ of the new link; link deletion.
 
 -----
 

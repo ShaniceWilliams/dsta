@@ -56,7 +56,7 @@ Can flower samples be assigned to their proper sub-family purely on the basis of
 
 **Solution:**
 
-a linear combination $\mathcal{D_1} \times \dots \mathcal{D_{4}}\rightarrow \mathcal{D_5}$ 
+a linear combination $\mathcal{D_1} \times \dots \mathcal{D_{4}}\rightarrow \mathcal{D_5}$
 
 that *respects* the given classification.
 
@@ -93,7 +93,7 @@ All measurements are in cm.
 
 The``iris.csv` file is a comma separated file. To load the dataset into the memory we follow the following steps:
 
-1. Read the file using the `csv.reader` function.
+1. Read the file using Pandas.
 2. For each row, split them by comma. This will create a list of strings for the row. Then map the strings into the float value.
 3. Map the classes to an integer value.
 4. Convert the row lists called as \texttt{data} in the program into a numpy array.
@@ -126,7 +126,9 @@ print(iris['data'])
 print(iris['target'])
 ```
 
----
+## An alternative solution
+
+Self-study this interesting package [ucimlrepo](https://pypi.org/project/ucimlrepo/)
 
 ```python
 pip install ucimlrepo
@@ -149,11 +151,11 @@ print(iris.metadata)
 print(iris.variables) 
 ```
 
----
+-----
 
 ## Try visualising the data
 
-Open file `2d_visualisation.py` read the code then run it.
+Open the exercise files, read the code then run it.
 
 * exercise: plot the histogram of the sepal-width column
 
@@ -165,4 +167,4 @@ See the [Matplotlib tutorial](https://matplotlib.org/3.1.1/api/_as_gen/matplotli
 
 ## Try at home
 
-![Complete scatterplots](./imgs/iris_all_scatterplots.png)
+![](./imgs/iris_all_scatterplots.png)

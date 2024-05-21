@@ -3,8 +3,26 @@ title: "Relevant Python modules: Numpy"
 lang: en
 author: AM 
 format:
-  html:
+  revealjs: 
+    theme: solarized
+    css: ../../styles/dsta_slides.css
+    slide-number: true
+    slide-level: 2
+    # title-slide-attributes:
+      # data-background-image: ../../styles/bbk-logo.svg
     code-fold: false
+    echo: true
+  html:
+    toc: true
+    code-fold: false
+    anchor-sections: true
+    other-links:
+      - text: Class page
+        href: https://ale66.github.io/dsta/
+    code-links:
+      - text: Data
+        icon: file-code
+        href: ./data/biostats.csv
 jupyter: python3
 ---
 
@@ -142,13 +160,11 @@ d.sum(axis=0)
 
 ```{python}
 # summing by row
-
 d.sum(axis=1)
 ```
 
 ```{python}
 # sum the whole content
-
 d.sum()
 ```
 
@@ -160,21 +176,22 @@ Using information about the shape we can create/manipulate (or reshape, or trans
 
 ```{python}
 # Create 2x3 Numpy array and initialise it to 0s
-
 e = np.zeros((2, 3), dtype = 'i')
+
 e
 ```
 
 ```{python}
 # Change the shape
-
 e.reshape(3, 2)
 ```
 
+-----
+
 ```{python}
 # Take another array to infer shape
-
 f = np.ones_like(e, dtype = 'i')
+
 f
 ```
 
@@ -191,8 +208,7 @@ f.T
 2-D arrays with the same dimensions can be merged 
 
 ```{python}
-# Create an idendtity matrix of order 5
-
+# Create an identity matrix of order 5
 i = np.eye(5)
 
 i
@@ -200,13 +216,13 @@ i
 
 ```{python}
 # stacking combines two 2-d arrays: vertically
-
 np.vstack((i, i))
 ```
 
+-----
+
 ```{python}
 # stacking combines two 2-d arrays: horizontally
-
 np.hstack((i, i))
 ```
 
@@ -239,11 +255,13 @@ The Boolean filter itself can be represented by a Numpy array
 ```{python}
 l = np.array([np.arange(9)])
 
+l
+```
+```{python}
 l.reshape((3, 3))
 
 l
 ```
-
 ```{python}
 # Let's apply a high-pass filter
 
@@ -258,15 +276,20 @@ l[l>4]
 
 ---
 
-## From Numpy to Pandas: where()
+## From Numpy to Pandas: `where()`
 
 Even though Pandas is built on Numpy, `where()` has a distinct semantics
 
-In Numpy we can specify the action associated to True and false, respectively.
+Numpy allows specifying the respective action associated to `True` and `False`
 
 ```{python}
 l = np.array([np.arange(9)])
 
+l
+```
+
+```{python}
+# deserialise the arrat into a square matrix
 l = l.reshape((3, 3))
 
 l
@@ -295,7 +318,6 @@ my_df
 
 ```{python}
 # Extract the square root of each el. of column B (NB: my_df remains unchanged)
-
 np.sqrt(my_df.B) 
 ```
 
@@ -310,6 +332,5 @@ m = my_df.values
 
 m
 ```
-
 
 <!------------------------------------------------------------->
