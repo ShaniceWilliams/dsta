@@ -1,20 +1,46 @@
 ---
+title: "Live coding: decition trees"
 lang: en
-title: "Live Coding Decision Trees"
-author: "Abul Hasan"
+author: AH 
+format:
+  pdf:
+    papersize: A4
+    number-sections: true
+    pdf-engine: pdflatex
+  revealjs: 
+    theme: solarized
+    css: ../../styles/dsta_slides.css
+    slide-number: true
+    slide-level: 2
+    # title-slide-attributes:
+      # data-background-image: ../../styles/bbk-logo.svg
+    code-fold: false
+    echo: true
+    # smaller: true
+    scrollable: true
+  html:
+    toc: true
+    code-fold: false
+    anchor-sections: true
+    other-links:
+      - text: Class page
+        href: https://ale66.github.io/dsta/
+jupyter: python3
 ---
 
 ## Decision-trees: keywords
 
 Discretization, iterated binary segmentation, *misclassification* ...
 
-![Decision regions](./imgs/fp-ch-3-figure-3-15-b.png)
+![](./imgs/fp-ch-3-figure-3-15-b.png)
+
+*Decision regions* appear
 
 ## Decision-trees: more keywords
 
 Purity, Entropy, Information Gain, root-to-leaf ...
 
-![Decision tree](./imgs/fp-ch-3-figure-3-15-a.png)
+![](./imgs/fp-ch-3-figure-3-15-a.png)
 
 ---
 
@@ -22,7 +48,7 @@ Purity, Entropy, Information Gain, root-to-leaf ...
 
 Visit the [UCI ML Repository](https://archive.ics.uci.edu/ml/datasets/banknote+authentication).
 
-![UCI ML Repository](./imgs/uci-page.png)
+![](./imgs/uci-page.png)
 
 Wavelet transformation yields the following features:
 
