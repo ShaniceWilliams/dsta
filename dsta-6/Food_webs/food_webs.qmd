@@ -1,9 +1,32 @@
 ---
-author: DSTA 
-title: "Food Webs"
+title: "Food webs"
 lang: en
+author: DSTA 
+format:
+  pdf:
+    papersize: A4
+    number-sections: true
+    pdf-engine: pdflatex
+  revealjs: 
+    theme: solarized
+    css: ../../styles/dsta_slides.css
+    slide-number: true
+    slide-level: 2
+    # title-slide-attributes:
+      # data-background-image: ../../styles/bbk-logo.svg
+    code-fold: false
+    echo: true
+    # smaller: true
+    scrollable: true
+  html:
+    toc: true
+    code-fold: false
+    anchor-sections: true
+    other-links:
+      - text: Class page
+        href: https://ale66.github.io/dsta/
+jupyter: python3
 ---
-
 
 # Data Science and Complex Networks
 
@@ -57,7 +80,7 @@ Possible understanding: a relationship istance.
 
 Average distances are also important
 
-[Facebook, circa 2011](https://arxiv.org/abs/1111.4570v3)
+[](https://arxiv.org/abs/1111.4570v3)
 
 > [...] the first world-scale social-network graph-distance computations, using the entire Facebook network of active users (~721 million users, ~69 billion friendship links). 
 > The average distance [...] is 4.74, corresponding to 3.74 intermediaries or "degrees of separation." 
@@ -83,15 +106,15 @@ $G=\langle V, E, D\rangle$ where $V$ are __nodes__ D are __dimensions/layers__ a
 
 ## interesting questions I: paths and *oflow*
 
-[![Karate Club](./imgs/karate_club-unlabeled.jpg)](www.jstor.org/stable/3629752?seq=1#page_scan_tab_contents)
+[![](./imgs/karate_club-unlabeled.jpg)](www.jstor.org/stable/3629752?seq=1#page_scan_tab_contents)
 
 ## interesting questions II: centralities
 
-[![Karate club](./imgs/karate_club-centrality.jpg)](https://www.jstor.org/stable/3629752?seq=1#page_scan_tab_contents)
+[![](./imgs/karate_club-centrality.jpg)](https://www.jstor.org/stable/3629752?seq=1#page_scan_tab_contents)
 
 ## interesting questions III: clustering
 
-[![Karate club](./imgs/karate_club-clustered.png)](https://en.wikipedia.org/wiki/Zachary%27s_karate_club)
+[![](./imgs/karate_club-clustered.png)](https://en.wikipedia.org/wiki/Zachary%27s_karate_club)
 
 -----
 
@@ -111,11 +134,13 @@ for v in G:
 
 ## Visualizing frequencies by graphs
 
-![Polisemy](./imgs/polisemy-graph.jpg)
+Polisemy:
+
+![](./imgs/polisemy-graph.jpg)
 
 ## More on Graphs/Networks
 
-[![Textbook](./imgs/caldarelli-cover.jpg)](http://book.complexnetworks.net/)
+[![](./imgs/caldarelli-cover.jpg)](http://book.complexnetworks.net/)
 . . .
 
 The Python 2 code can be [cloned from Github](https://github.com/datascienceandcomplexnetworks/book_code)
@@ -143,7 +168,7 @@ source, connect and sink.
 
 -----
 
-![Food web](./imgs/food_web.png)
+![](./imgs/food_web.png)
 
 ## Method
 

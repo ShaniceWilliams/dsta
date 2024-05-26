@@ -1,7 +1,31 @@
 ---
+title: "Singular-value Decomposition"
 lang: en
-author: "Singular-value Decomposition"
-title: DSTA
+author: DSTA 
+format:
+  pdf:
+    papersize: A4
+    number-sections: true
+    pdf-engine: pdflatex
+  revealjs: 
+    theme: solarized
+    css: ../../styles/dsta_slides.css
+    slide-number: true
+    slide-level: 2
+    # title-slide-attributes:
+      # data-background-image: ../../styles/bbk-logo.svg
+    code-fold: false
+    echo: true
+    # smaller: true
+    scrollable: true
+  html:
+    toc: true
+    code-fold: false
+    anchor-sections: true
+    other-links:
+      - text: Class page
+        href: https://ale66.github.io/dsta/
+jupyter: python3
 ---
 
 <!-------------------------------------------------------------->
@@ -17,13 +41,13 @@ We think of A as __scaling__ space with a factor $\lambda$ in direction $\mathbf
 
 Singular values uncover categories and their strenghts.
 
-The Eigen-decomposition of a square matrix seen in [Goodfellow et al.] can be extended to arbitrary matrices!
+The Eigen-decomposition of a square matrix seen in [Goodfellow et al.](https://www.deeplearningbook.org/) can be extended to arbitrary matrices!
 
 -----
 
-![Epairs](./imgs/eigenpairs.png)
+![](./imgs/eigenpairs.png)
 
-![Epairs 2](./imgs/eigenpairs-caption.png)
+![](./imgs/eigenpairs-caption.png)
 
 -----
 
@@ -46,7 +70,7 @@ Let the square matrix A have n
 . . .  
 
 $$
-A = V \rm{diag}(\mathbf{\lambda}) V^{T}
+A = V \mathrm{diag}(\mathbf{\lambda}) V^{T}
 $$
 
 where $V = [\mathbf{v}^{(1)} \mathbf{v}^{(1)}\dots \mathbf{v}^{(n)}]$
@@ -55,7 +79,7 @@ where $V = [\mathbf{v}^{(1)} \mathbf{v}^{(1)}\dots \mathbf{v}^{(n)}]$
 
 $\mathbf{\lambda} = [\lambda_1 \lambda_2\dots \lambda_n]$.
 
-$$ \rm{diag}(\mathbf{\lambda}) = 
+$$ \mathrm{diag}(\mathbf{\lambda}) = 
 \begin{pmatrix}
 \lambda_1 & 0 & \dots \\
 0 & \lambda_2 & \dots\\
@@ -108,7 +132,7 @@ Singular-value decomp. generalises eigen-decomp.:
 . . .
 
 $$
-A = V \rm{diag}(\mathbf{\lambda}) V^{-1}
+A = V \mathrm{diag}(\mathbf{\lambda}) V^{-1}
 $$
 
 -----

@@ -1,7 +1,31 @@
 ---
-author: DSTA
 title: "Natural Language Processing with Entropy"
 lang: en
+author: DSTA 
+format:
+  pdf:
+    papersize: A4
+    number-sections: true
+    pdf-engine: pdflatex
+  revealjs: 
+    theme: solarized
+    css: ../../styles/dsta_slides.css
+    slide-number: true
+    slide-level: 2
+    # title-slide-attributes:
+      # data-background-image: ../../styles/bbk-logo.svg
+    code-fold: false
+    echo: true
+    # smaller: true
+    scrollable: true
+  html:
+    toc: true
+    code-fold: false
+    anchor-sections: true
+    other-links:
+      - text: Class page
+        href: https://ale66.github.io/dsta/
+jupyter: python3
 ---
 
 ## NLP and Entropy measures
@@ -38,7 +62,7 @@ Suppose, we want to extract Coronavirus symptoms from a stream of Twitter posts 
 
 Finding a new symptom is the task of *Named Entity Recognition (NER).*
 
-![Fever ex](./imgs/example-fever.png)
+![](./imgs/example-fever.png)
 
 -----
 
@@ -78,13 +102,13 @@ Named entity recognition (and others) are normally addressed by means of a *supe
 
 It starts with human, reliable annotation of example texts: the training data.
 
-![Annotation](./imgs/annotation.png)
+![](./imgs/annotation.png)
 
 -----
 
 If *well-trained,* the ML model will be capable of predicting the entities in new text.
 
-![Model](./imgs/model.png)
+![](./imgs/model.png)
 
 <!-- ----------- -->
 # Phrase Completion
@@ -112,13 +136,13 @@ Probs. are extracted from frequencies of co-occurence in corpora.
 
 This bigram tabled by [Martin-Jufrasky] is a LM in itself
 
-[![Bigrams](./imgs/m-j-bigrams.png)](https://web.stanford.edu/~jurafsky/slp3/3.pdf)
+[![](./imgs/m-j-bigrams.png)](https://web.stanford.edu/~jurafsky/slp3/3.pdf)
 
 ## How to evaluate results
 
 N-gram models estimate the probability of the last word of an n-gram given the previous words.
 
-[![Bigrams](./imgs/m-j-bigrams.png)](https://web.stanford.edu/~jurafsky/slp3/3.pdf)
+[![](./imgs/m-j-bigrams.png)](https://web.stanford.edu/~jurafsky/slp3/3.pdf)
 Which is the best N-gram model?
 
 To rate them we need Information theory.
@@ -176,7 +200,7 @@ $H(W) \approx - \frac{1}{N} \log \Pi_{i=1}^{N} P(w_i)$
 
 ## Perplexity in action
 
-![Language model](./imgs/lm.png)
+![](./imgs/lm.png)
 
 What is the perplexity of the following test sentence (notice grammar)?
 
@@ -188,7 +212,7 @@ W = ``prime corona symptom is fever and cough``
 
 W is now our P distribution
 
-![Language model](./imgs/lm.png)
+![](./imgs/lm.png)
 
 $\frac{1}{N}=\frac{1}{7}$
 
