@@ -1,7 +1,31 @@
 ---
-author: AH 
-title: "Food Webs Notebook"
+title: "Food webs notebook"
 lang: en
+author: DSTA 
+format:
+  pdf:
+    papersize: A4
+    number-sections: true
+    pdf-engine: pdflatex
+  revealjs: 
+    theme: solarized
+    css: ../../styles/dsta_slides.css
+    slide-number: true
+    slide-level: 2
+    # title-slide-attributes:
+      # data-background-image: ../../styles/bbk-logo.svg
+    code-fold: false
+    echo: true
+    # smaller: true
+    scrollable: true
+  html:
+    toc: true
+    code-fold: false
+    anchor-sections: true
+    other-links:
+      - text: Class page
+        href: https://ale66.github.io/dsta/
+jupyter: python3
 ---
 
 
@@ -95,9 +119,9 @@ Conventional top-to-bottom execution is preserved.
 
 - study the "Food web" notebook associated to Chapter 1 of Caldarelli-Chessa's textbook.
 
-- append your code in the cell below the "Q" questions.
+- append your code in the cell below the `Q` questions.
 
-- test 'what if' questions by changing the code cells: double-click on the cell opens it up for editing.
+- test *'what if'* questions by changing the code cells: double-click on the cell opens it up for editing.
 
 - a solution is available, but please read it only after you have tried to solve the problem.
 
