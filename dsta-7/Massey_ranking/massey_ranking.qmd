@@ -1,7 +1,31 @@
 ---
+title: "Massey's ranking"
 lang: en
-author: DSTA
-title:  "Massey's ranking"
+author: DSTA 
+format:
+  pdf:
+    papersize: A4
+    number-sections: true
+    pdf-engine: pdflatex
+  revealjs: 
+    theme: solarized
+    css: ../../styles/dsta_slides.css
+    slide-number: true
+    slide-level: 2
+    # title-slide-attributes:
+      # data-background-image: ../../styles/bbk-logo.svg
+    code-fold: false
+    echo: true
+    # smaller: true
+    scrollable: true
+  html:
+    toc: true
+    code-fold: false
+    anchor-sections: true
+    other-links:
+      - text: Class page
+        href: https://ale66.github.io/dsta/
+jupyter: python3
 ---
 
 # Rating and Ranking
@@ -54,11 +78,11 @@ yet, abilities are also
 
 ## Example: Football
 
--Hard to guess the single score $\Longrightarrow$ entertainment value
+- hard to guess the single score $\Longrightarrow$ entertainment value
 
 . . .
 
--easy for experts to guess the long-term effect (cue RTTM) $\Longrightarrow$ different levels of enjoyment
+- easy for experts to guess the long-term effect $\Longrightarrow$ different levels of enjoyment; RTTM: Revert To The Mean effect
 
 . . .
 
@@ -136,19 +160,19 @@ $$
 
 ### Yes:
 
--feeling of improvement
+- feeling of improvement
 
 . . .
 
--a gauge for new features
+- a gauge for new features
 
 . . .
 
--leads to rankings:
+- leads to rankings:
 
---better matchmaking $\Longrightarrow$ entertainment value
+  - better matchmaking $\Longrightarrow$ entertainment value
 
---fraud/anomaly detection?
+  - fraud/anomaly detection?
 
 ## No: game prowness as social ranking?
 
@@ -175,7 +199,7 @@ The spectacle is a social relation mediated by images, not a collection of image
 
 - n teams play each other in a tournament
 
-- final scores are recorded, e.g., PSG-Ajax: 2-0.
+- final scores are recorded, e.g., Real Madrid--Borussia Dortmund: 2-0.
 
 - predict the score for a match in the future.
 
@@ -185,7 +209,7 @@ The spectacle is a social relation mediated by images, not a collection of image
 
 ## Running example
 
-![Scores from a Colleagiate Football league](./imgs/massey-1.png)
+![](./imgs/massey-1.png)
 
 the win-loss balance and the points balance are second-level performance measures
 
@@ -205,15 +229,15 @@ and a prediction $Pr[a\rightarrow b] = \frac{\rho(a)}{\rho(a)+\rho(b)}$
 
 2. strength/rating is immutable during the tournament
 
-3. teams play each other exactly once during the tournament.
+3. teams play each other exactly once during the tournament
 
 . . .
 
-Now, consider the score difference in each match, say i vs. j, defined as $s_i - s_j$.
+Now, consider the score difference in each match, say $i$ vs. $j,$ defined as $s_i - s_j$
 
-We define $\mathbf{y}_{m\times 1}$ as the vector of all score differences in matches
+Define $\mathbf{y}_{m\times 1}$ as the vector of all score differences in matches
 
-We assume (assumption 4) that strength/rating imbalance determines score difference:
+Assume (assumption 4) that strength/rating imbalance determines score difference:
 
 $$
 r_i - r_j = s_i - s_j
@@ -288,13 +312,13 @@ M. also noticed that *M* has a fixed structure and does not need to be re-comput
 \end{bmatrix}
 \end{equation*}
 
-$m_{i,i} = n-1$ is the numbers of games i played, 
+$m_{i,i} = n-1$ is the numbers of games $i$ played, 
 
-$m_{i,j}$ is the negation of the no. of matches bet. i and j: here all values are set to -1.
+$m_{i,j}$ is the negation of the no. of matches between $i$ and $j:$ here all values are set to -1.
 
 -----
 
-![Massey matrix](./imgs/massey-2.png)
+![](./imgs/massey-2.png)
 
 ## Massey
 
@@ -318,13 +342,13 @@ $$\overline{M} \mathbf{r} = \overline{\mathbf{p}}$$
 
 to obtain an approximated rating for the teams.
 
-The MSE solution to Massey's formula is a form of  __regression__.
+The MSE solution to Massey's formula is a form of  __regression.__
 
 It can also be seen as $\mathbf{r} = (\overline{X^TX})^{-1} \overline{X^T \mathbf{y}}.$
 
 ## Output
 
-![Output](./imgs/massey-3.png)
+![](./imgs/massey-3.png)
 
 ratings sum to zero
 
@@ -334,7 +358,10 @@ however, they effectively generate __a hierarchy.__
 
 -----
 
-![Output](./imgs/massey-3.png)  ![Output 2](./imgs/massey-4.png)
+![](./imgs/massey-3.png)  
+
+
+![](./imgs/massey-4.png)
 
 <!-- -------------------- -->
 # Conclusions
@@ -355,4 +382,4 @@ however, they effectively generate __a hierarchy.__
 
 ## Further readings
 
-[![Book Cover](./imgs/book-cover.jpeg)](https://press.princeton.edu/titles/9661.html)
+[![](./imgs/book-cover.jpeg)](https://press.princeton.edu/titles/9661.html)
