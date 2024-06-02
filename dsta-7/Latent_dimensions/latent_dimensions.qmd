@@ -1,3 +1,33 @@
+---
+title: "Latent dimensions"
+lang: en
+author: DSTA 
+format:
+  pdf:
+    papersize: A4
+    number-sections: true
+    pdf-engine: pdflatex
+  revealjs: 
+    theme: solarized
+    css: ../../styles/dsta_slides.css
+    slide-number: true
+    slide-level: 2
+    # title-slide-attributes:
+      # data-background-image: ../../styles/bbk-logo.svg
+    code-fold: false
+    echo: true
+    # smaller: true
+    scrollable: true
+  html:
+    toc: true
+    code-fold: false
+    anchor-sections: true
+    other-links:
+      - text: Class page
+        href: https://ale66.github.io/dsta/
+jupyter: python3
+---
+
 > A presentation of Ch. 11 of Lescovec et al., [[Mining of Massive
 > Datasets]{.underline}](http://www.mmds.org/#book)
 >
