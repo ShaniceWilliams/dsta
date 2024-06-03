@@ -45,13 +45,13 @@ jupyter: python3
 
 ---
 
-- The Jupyther `.ipynb` format is standard
+- The Jupyter `.ipynb` format is standard
   
 - Markdown cells are used for comments and explanations
 
 - to run the cells, J. requires a callable Python __kernel__ 
 
-- a notbook is a JSON file, with JavaScript execution
+- a notebook is a JSON file, with JavaScript execution
 
 ```js
   "cell_type" : "code",
@@ -71,7 +71,7 @@ jupyter: python3
 
 ---
 
-### Jupiter Notebooks
+### Jupyter Notebooks
 
 Detailed installation instructions are at the [Jupyter project website](https://jupyter.org/install)
 
