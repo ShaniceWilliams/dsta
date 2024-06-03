@@ -107,11 +107,55 @@ Original Python 2 notebooks are available at the [textbook repo](github.com/data
 
 Currently VS Code supports Jupyter with a [dedicated extension](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter)
 
-Also, a cell block in a plain Python files can be split up into cells that can be run separately, Jupyuter-style.
+Also, a cell block in a plain Python files can be split up into cells that can be run separately, Jupyter-style.
 
 Use ``# %%`` at the beginning of a line to delimit cells; the cell buttons will appear.
 
 Conventional top-to-bottom execution is preserved.
+
+---
+
+### Jupyter to learn Network analysis, III
+
+- familiarize with Python networkx library for network analysis
+
+- example: undirected graph
+
+```python
+import networkx as nx
+
+adjacency_matrix = [
+    [0,1,0,1],
+    [1,0,1,1],
+    [0,1,0,0],
+    [1,1,0,0]
+    ]
+
+A = np.array(adjacency_matrix)
+G = nx.from_numpy_array(A)
+nx.draw(G, with_labels=True)
+```
+
+---
+
+### Jupyter to learn Network analysis, IV
+
+- example: directed graph
+
+```python
+import networkx as nx
+
+adjacency_matrix_directed = [
+    [0,1,0,1],
+    [0,0,1,0],
+    [0,0,0,1],
+    [0,0,0,0]
+    ]
+
+AD = np.array(adjacency_matrix_directed)
+GR = nx.from_numpy_array(AD, create_using=nx.MultiDiGraph())
+nx.draw(GR, with_labels=True)
+```
 
 ---
 
