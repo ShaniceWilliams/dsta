@@ -56,7 +56,7 @@ discover __multiplex networks__
 
 * discover hidden structures
 
-<img src="https://www.dcs.bbk.ac.uk/~ale/dsta/dsta-7/imgs-trade/bipartite.png" height="300">
+<img src="https://www.dcs.bbk.ac.uk/~ale/dsta/dsta-7/Trade_networks/imgs/bipartite.png" height="300">
 
 
 ## The directed network model
