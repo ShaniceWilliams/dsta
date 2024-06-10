@@ -1,7 +1,31 @@
 ---
-author: DSTA
 title: "The Internet[work]"
 lang: en
+author: DSTA 
+format:
+  pdf:
+    papersize: A4
+    number-sections: true
+    pdf-engine: pdflatex
+  revealjs: 
+    theme: solarized
+    css: ../../styles/dsta_slides.css
+    slide-number: true
+    slide-level: 2
+    # title-slide-attributes:
+      # data-background-image: ../../styles/bbk-logo.svg
+    code-fold: false
+    echo: true
+    # smaller: true
+    scrollable: true
+  html:
+    toc: true
+    code-fold: false
+    anchor-sections: true
+    other-links:
+      - text: Class page
+        href: https://ale66.github.io/dsta/
+jupyter: python3
 ---
 
 # Summary of Trade Networks
@@ -16,7 +40,7 @@ look at how they trade and what they trade
 
 The country-to-product network induces country-to-country and product-to-product relationships.
 
-![Bipartite network](./imgs/bipartite.png)
+![](./imgs/bipartite.png)
 
 ## Reconstruction
 
@@ -54,68 +78,52 @@ $L$: total number of links.
 
 ## Assortativity
 
-Do vertices tend to connect with those with similar/dissimilar degree? Compute
+Do vertices tend to connect with those with similar/dissimilar degree? 
 
-. . .
-
-- the avg. degree of node $i$'s neighbors:
+Compute the avg. degree of $i$'s neighbors:
 
 $$
 K_{nn}(i) = \frac{\sum_{\langle ij\rangle} k_j}{k_i}
 $$
 
-. . .
-
-- Next, the avg. $K_{nn}$ for the $n_d$ nodes which have degree $d$
-
-$$
-K_{nn}(d) = \frac{\sum_{i:k_i=d} K_{nn}(i)}{n_d}
-$$
-
 -----
 
+Find the avg. $K_{nn}$ of nodes which have degree $d$: 
+
 $$
 K_{nn}(d) = \frac{\sum_{i:k_i=d} K_{nn}(i)}{n_d}
 $$
 
-Are $d$ and $K_{nn}(d)$ close?
-
-Does assortativity grow over time?
-
-## Balassa's RCA
-
-Thanks to export values (entries $M_{cp}$ $in the adjacency matrix) we compute fractional ownership of export, product by product.
-
-The Revealed Comparative Advantage (RCA) is in controlling a high fraction of some product. 
-
-$M_{cp}$: the value of export of prod. $p$ by country $c$.
+where $n_d$ is the number of nodes having degree $d.$
 
 . . .
 
-$\sum_{p^\prime} M_{cp^\prime}$: total value of export by country $c$.
+- Are $d$ and $K_{nn}(d)$ close?
 
-. . .
+- does assortativity grow over time?
 
-$\textrm{RCA}_{cp} = \frac{\frac{M_{cp}}{\sum_{p^\prime} M_{cp^\prime}}}{\frac{\sum_{c^\prime} M_{c^\prime p}}{\sum_{c^\prime} \sum_{p^\prime} M_{c^\prime p^\prime}}}$
 
 <!-- ------------------- -->
 # The Internet Network
 
 ## The need for resolution
 
-![ISP network](./imgs/isp-ss.gif)
+The [Internet Service Provider network](https://www.cheswick.com/ches/map/gallery/):
+
+![](./imgs/isp-ss.png){height=300px}
 
 ## From visualisation back to data
 
-Thanks to the Beautifulsoup module, images of networks in ".svg" format can be imported into a Networkx structure.
+Thanks to the [Beautifulsoup project](https://www.crummy.com/software/BeautifulSoup/), images of networks in `.svg` format can be imported into a Networkx structure.
 
-![SVG example](./imgs/svg-example.png)
+![](./imgs/svg-example.png)
+
 -----
 
 ```python
-from BeautifulSoup import BeautifulSoup 
+from bs4 import BeautifulSoup
 
-FILE = 'svg-example.svg'
+FILE = 'data/svg-example.svg'
 
 op = open(FILE, 'r')
 
@@ -147,13 +155,11 @@ Centrality is about importance, of a vertex or edge, within the whole network.
 
 The topology of the network should reflect such importance, so we do not need to __inspect__ the entities.
 
------
+![](./imgs/star-graph.png){height=300px}
 
-![Star graph](./imgs/star-graph.gif)
+## Comparing centralities
 
-## Examples
-
-![Centralities comparison](./imgs/centralities-comparison.png)
+![](./imgs/centralities-comparison.png)
 
 ## Degree centrality
 
@@ -195,7 +201,7 @@ $$
 
 ---
 
-[![Betw.](./imgs/betweenness-ex.jpg)](https://dl.acm.org/doi/full/10.1145/3577021)
+[![](./imgs/betweenness-ex.jpg)](https://dl.acm.org/doi/full/10.1145/3577021)
 
 1 shortest path in 4 (or 25%) goes through *b,* the same with *g.* 
 
@@ -207,7 +213,7 @@ Good estimates are valuable when the network evolves in a fully-dynamic way: edg
 
 -----
 
-![Comparison](./imgs/centralities-comparison.png)
+![](./imgs/centralities-comparison.png)
 
 <!-- ---------------------------- -->
 # Eigenvector centrality
