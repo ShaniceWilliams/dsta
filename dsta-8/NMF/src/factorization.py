@@ -4,7 +4,7 @@
 #
 # Created by Albert Au Yeung (2010)
 #
-# An implementation of matrix factorization
+# An implementation of NMF
 #
 try:
     import numpy as np
