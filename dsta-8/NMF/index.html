@@ -608,7 +608,7 @@ v_i \approx W\cdot h_i
 <section id="the-faces-on-scikit-learn" class="slide level2">
 <h2>The faces on Scikit-learn</h2>
 <p>Check a <a href="https://scikit-learn.org/stable/auto_examples/decomposition/plot_faces_decomposition.html">visual comparison of the methods</a> on <code>64x64=4096</code> mugshots: 40 classes for 400 samples.</p>
-<div id="ddee2958" class="cell" data-execution_count="1">
+<div id="9ff5a663" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_olivetti_faces</span>
 <span id="cb1-2"><a href=""></a></span>
 <span id="cb1-3"><a href=""></a>olivetti_faces <span class="op">=</span> fetch_olivetti_faces()</span>
@@ -693,15 +693,15 @@ v_i \approx W\cdot h_i
 </section>
 <section id="analysis-of-the-error-ii" class="slide level2">
 <h2>Analysis of the error, II</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a>np.rint(np(nP, nQ.T))<span class="op">=</span> [</span>
-<span id="cb10-2"><a href=""></a>            [ <span class="fl">1.</span>  <span class="fl">1.</span>  <span class="fl">1.</span>  <span class="fl">1.</span>  <span class="fl">1.</span>]</span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a>np.rint(np.dot(nP, nQ.T))<span class="op">=</span> [</span>
+<span id="cb10-2"><a href=""></a>      [ <span class="fl">1.</span>  <span class="fl">1.</span>  <span class="fl">1.</span>  <span class="fl">1.</span>  <span class="fl">1.</span>]</span>
 <span id="cb10-3"><a href=""></a>            [ <span class="fl">3.</span>  <span class="fl">3.</span>  <span class="fl">3.</span>  <span class="fl">3.</span>  <span class="fl">3.</span>]</span>
 <span id="cb10-4"><a href=""></a>            [ <span class="fl">4.</span>  <span class="fl">4.</span>  <span class="fl">4.</span>  <span class="fl">4.</span>  <span class="fl">4.</span>]</span>
 <span id="cb10-5"><a href=""></a>            [ <span class="fl">5.</span>  <span class="fl">5.</span>  <span class="fl">5.</span>  <span class="fl">5.</span>  <span class="fl">5.</span>]</span>
 <span id="cb10-6"><a href=""></a>            [ <span class="fl">4.</span>  <span class="fl">4.</span>  <span class="fl">4.</span>  <span class="fl">4.</span>  <span class="fl">4.</span>]</span>
 <span id="cb10-7"><a href=""></a>            [ <span class="fl">5.</span>  <span class="fl">5.</span>  <span class="fl">5.</span>  <span class="fl">5.</span>  <span class="fl">5.</span>]</span>
 <span id="cb10-8"><a href=""></a>            [ <span class="fl">2.</span>  <span class="fl">2.</span>  <span class="fl">2.</span>  <span class="fl">2.</span>  <span class="fl">2.</span>]</span>
-<span id="cb10-9"><a href=""></a>            ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-9"><a href=""></a>      ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a>ratings <span class="op">=</span>  [[<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
 <span id="cb11-2"><a href=""></a>            [<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
 <span id="cb11-3"><a href=""></a>            [<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>

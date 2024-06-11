@@ -74,7 +74,7 @@ Later, ratings will determine rankings and winning probabilities.
 
 ## Stipulations, 3
 
-K. believes that strengh, which is manifested, and rating, which is latent, should be connected by a scaling factor $\lambda$, which is to be determined for each league/turnament:
+K. believes that strengh, which is *manifest,* and rating, which is *latent,* should be connected by a scaling factor $\lambda$, which is to be determined for each league/turnament:
 
 $s_i = \lambda r_i$
 
