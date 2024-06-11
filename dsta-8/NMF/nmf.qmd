@@ -381,7 +381,7 @@ ratings =  [[1, 1, 1, 0, 0],
             [0, 0, 0, 2, 2]]
 ```
 
-try [Scikit-learn](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html) on [the same instance](./src/scikit-learn-nmf.py)
+try [Scikit-learn](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html) on [the same instance](./src/scikit-learn-nmf.ipynb) (right-click to save a local copy).
 
 ## Analysis of the result
 
