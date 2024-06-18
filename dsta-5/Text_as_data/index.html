@@ -245,6 +245,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -410,9 +411,9 @@ DSTA
 </section>
 <section id="example-application-text-compression" class="slide level2">
 <h2>Example application: text compression</h2>
-<p>In languages, the occurrence of symbols is statistically imbalanced.</p>
-<p><a href="https://en.wikipedia.org/wiki/Letter_frequency"><img data-src="/imgs/letters-frequency.png"></a></p>
-<p>Zipf’s law: if the most frequent word appears k times, then the <span class="math inline">\(i\)</span>-th word by freq. appears <span class="math inline">\(\frac{k}{i}\)</span> times.</p>
+<p>In languages, the occurrence of symbols is <a href="https://en.wikipedia.org/wiki/Letter_frequency">statistically imbalanced</a>:</p>
+
+<img data-src="./imgs/letters-frequency.png" class="r-stretch"><p>Zipf’s law: if the most frequent word appears k times, then the <span class="math inline">\(i\)</span>-th word by freq. appears <span class="math inline">\(\frac{k}{i}\)</span> times.</p>
 </section>
 <section class="slide level2">
 
@@ -422,7 +423,7 @@ DSTA
 <li><p>A simpler application of Entropy is text compression</p></li>
 </ul>
 </section>
-<section id="encoding-compression" class="slide level2">
+<section id="encoding-compression" class="slide level2 scrollable">
 <h2>Encoding compression</h2>
 <ol type="1">
 <li>collect the frequencies of characters in a relevant <strong>corpus</strong></li>
@@ -441,7 +442,7 @@ DSTA
 <p>Further comp. by taking 2- and 3-grams: sequences of 2 or 3 characters.</p>
 <p>The 3-gram <strong>ent</strong> appears more often than <strong>uzb.</strong></p>
 </section>
-<section class="slide level2">
+<section class="slide level2 scrollable">
 
 <ol type="1">
 <li>encode the least frequent two as 0 and 1.</li>
@@ -533,7 +534,7 @@ x
 </tbody></table>
 </div>
 </section>
-<section class="slide level2">
+<section class="slide level2 scrollable">
 
 <ol start="5" type="1">
 <li>Prefix “1” to all; encode the fourth-least frequent letter as 0 again:</li>
@@ -596,7 +597,7 @@ j
 </tr>
 </tbody></table>
 </section>
-<section class="slide level2">
+<section class="slide level2 scrollable">
 
 <ol start="5" type="1">
 <li>finally…</li>
